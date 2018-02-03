@@ -1,13 +1,29 @@
-'use strict';
-
 $(function(){
-    $('body').on('click', '.TEST-BLOCKCHAIN', function(){
-        alert("this is working");
-        $.ajax(
-            {url: '/get_blockchain', 
-            type: 'POST', 
-            data: { index: index, user: user }, 
-            success: function(result) 
-            { alert('success from POST') } });
-    }
+    $('body').on('click', '.testingPost', function(){
+    	let obj = {};
+        $.ajax({
+            	url: '/get_blockchain', 
+	            type: 'POST', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".alert-success").text(result.message) 
+	            } 
+        	});
+    	})
+
+    $('body').on('click', '.testingDelete', function(){
+    	let obj = {};
+        $.ajax({
+            	url: '/get_blockchain/delete', 
+	            type: 'DELETE', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".alert-danger").text(result.message) 
+	            } 
+        	});
+    	})
 })

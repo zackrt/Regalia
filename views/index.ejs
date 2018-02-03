@@ -2,26 +2,45 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+   <div class="panel panel-info">
+  <div class="panel-heading">Test CRUD Calls</div>
+  <div class="panel-body">
+    <button class="btn btn-success testingPost">POST TEST</button>
+    <div class="alert alert-success" role="alert"></div>
+    <button class="btn btn-danger testingDelete">DELETE TEST</button>
+    
+    <div class="alert alert-danger" role="alert"></div>
+  </div>
+</div>
+
     <h1><%= title %></h1>
     <h4>Pay Your Rent. Collect Regalia cryptocurrency.</h4>
     <h5>Coming Spring 2018</h5>
     <button>Sign Up!</button>
     <br>
-    <button class="btn TEST-BLOCKCHAIN">TEST BLOCKCHAIN</button>
-    <div class='results'></div>
+    
     <br>
     <br>
     <form class="sign-up-form">
     <input class="form-control form-control-lg" type="text" placeholder="Username" required>
     <input class="form-control form-control-lg" type="text" placeholder="Password" required>
     </form>
-    <script
-  src="http://code.jquery.com/jquery-3.3.1.slim.js"
-  integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
-  crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="/javascripts/homescreen.js"></script>
   </body>
 </html>
