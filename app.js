@@ -11,7 +11,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-//  var blockchain = require('./routes/blockchain');
+var blockchain = require('./routes/blockchain');
 // Mongoose internally uses a promise-like object,
 // but its better to make Mongoose use built in es6 promises
 mongoose.Promise = global.Promise;
@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
-//app.use('/get_blockchain', blockchain);
+app.use('/get_blockchain', blockchain);
 // catch-all endpoint if client makes request to non-existent endpoint
 app.use('*', function (req, res) {
   res.status(404).json({ message: 'Not Found' });
