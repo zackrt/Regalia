@@ -1,13 +1,55 @@
-'use strict';
-
 $(function(){
-    $('body').on('click', '.TEST-BLOCKCHAIN', function(){
-        alert("this is working");
-        $.ajax(
-            {url: '/get_blockchain', 
-            type: 'POST', 
-            data: { index: index, user: user }, 
-            success: function(result) 
-            { alert('success from POST') } });
-    }
+    $('body').on('click', '.testingPost', function(){
+    	let obj = {};
+        $.ajax({
+            	url: '/blockchain', 
+	            type: 'POST', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".alert-success").text(result.message) 
+	            } 
+        	});
+    	})
+
+    $('body').on('click', '.testingDelete', function(){
+    	let obj = {};
+        $.ajax({
+            	url: '/blockchain', 
+	            type: 'DELETE', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".alert-danger").text(result.message) 
+	            } 
+        	});
+    	})
+    $('body').on('click', '.testingGet', function(){
+    	let obj = {};
+        $.ajax({
+            	url: '/blockchain', 
+	            type: 'GET', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".alert-warning").text(result.message) 
+	            } 
+        	});
+    	})
+    $('body').on('click', '.testingPut', function(){
+    	let obj = {};
+        $.ajax({
+            	url: '/blockchain', 
+	            type: 'PUT', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".alert-info").text(result.message) 
+	            } 
+        	});
+    	})
 })
