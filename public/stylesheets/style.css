@@ -13,3 +13,7 @@ a {
 	width:70%;
 	margin:20px auto;
 }
+.form-response {
+	margin:20px auto;
+	display:none;
+}

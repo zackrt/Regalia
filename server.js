@@ -2,39 +2,45 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-var path = require('path');
+const path = require('path');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
 
-var logger = require('morgan');
+const routes = require('./routes/index');
+const users = require('./routes/users');
+const blockchain = require('./routes/blockchain');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var blockchain = require('./routes/blockchain');
-// Mongoose internally uses a promise-like object,
-// but its better to make Mongoose use built in es6 promises
 mongoose.Promise = global.Promise;
-// config.js is where we control constants for entire
-// app like PORT and DATABASE_URL
+
 const { PORT, DATABASE_URL } = require('./config');
-// const { User } = require('./models/users');
+const { User } = require('./models/users');
+
+
 const app = express();
-// view engine setup
 
-app.use(logger('dev'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(logger('common'));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', routes);
-// app.use('/users', users);
+//app.use('/', routes);
+app.use('/users', users);
 app.use('/blockchain', blockchain);
-// catch-all endpoint if client makes request to non-existent endpoint
-app.use('*', function (req, res) {
-  res.status(404).json({ message: 'Not Found' });
-});
-// closeServer needs access to a server object, but that only
-// gets created when `runServer` runs, so we declare `server` here
-// and then assign a value to it in run
+
+
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
+//   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+//   next();
+// });
+
+// app.use('*', function (req, res) {
+//   res.status(404).json({ message: 'nothing to see here' });
+// });
+
+
 let server;
-// this function connects to our database, then starts the server
+
 function runServer(databaseUrl, port = PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, err => {
