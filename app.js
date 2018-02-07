@@ -1,11 +1,11 @@
 'use strict';
-// const bodyParser = require('body-parser');
+
 const express = require('express');
 const mongoose = require('mongoose');
 var path = require('path');
-//var favicon = require('serve-favicon');
+
 var logger = require('morgan');
-//var cookieParser = require('cookie-parser');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var blockchain = require('./routes/blockchain');
@@ -18,12 +18,9 @@ const { PORT, DATABASE_URL } = require('./config');
 // const { User } = require('./models/users');
 const app = express();
 // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
+
 app.use(logger('dev'));
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
