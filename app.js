@@ -1,7 +1,8 @@
 'use strict';
-
+const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
+
 var path = require('path');
 
 var logger = require('morgan');
@@ -15,16 +16,17 @@ mongoose.Promise = global.Promise;
 // config.js is where we control constants for entire
 // app like PORT and DATABASE_URL
 const { PORT, DATABASE_URL } = require('./config');
-// const { User } = require('./models/users');
+//const { User } = require('./models/users');
 const app = express();
-// view engine setup
+app.use(bodyParser.urlencoded({ extended: true }));
+// view engine setup .use means it applies to all end points
 
 app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-// app.use('/users', users);
+app.use('/users', users);
 app.use('/blockchain', blockchain);
 // catch-all endpoint if client makes request to non-existent endpoint
 app.use('*', function (req, res) {

@@ -51,5 +51,19 @@ $(function(){
 	            	$(".alert-info").text(result.message) 
 	            } 
         	});
-    	})
+		})
+		$('#register-form').submit(function(e){
+			e.preventDefault;
+			let obj = {email: 'test@regalia.com', password:'testpass'};
+			$.ajax({
+            	url: '/users', 
+	            type: 'POST', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".registation-results").text("Registered!") 
+	            } 
+        	});
+		})
 })

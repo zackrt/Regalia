@@ -1,5 +1,8 @@
 'use strict';
 const mongoose = require('mongoose');
+
+const bcrypt = require ('bcryptjs');
+
 // this is our schema to represent a restaurant
 const userSchema = mongoose.Schema({
   name: {type: String, required: true},
@@ -26,6 +29,14 @@ userSchema.methods.serialize = function() {
     name: this.name
   };
 }
+
+userSchema.methods.validatePassword = function(password) {
+  return bcrypt.compare(password, this.password);
+}
+
+userSchema.statics.hashPassword = function (password) {
+  return bcrypt.hash(password, 10);
+};
 // note that all instance methods and virtual properties on our
 // schema must be defined *before* we make the call to `.model`.
 const User = mongoose.model('User', userSchema);
