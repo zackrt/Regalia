@@ -62,7 +62,7 @@ $(function(){
 	            dataType: 'json',
 	            success: function(result) 
 	            { 
-	            	$(".registation-results").text("Registered!") 
+	            	$(".registration-results").text("Registered!") 
 	            } 
         	});
 		})
