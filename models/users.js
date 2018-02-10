@@ -5,7 +5,13 @@ const bcrypt = require ('bcryptjs');
 
 // this is our schema to represent a restaurant
 const userSchema = mongoose.Schema({
-  name: {type: String, required: true},
+  EmailAddress: {type: String, required: true},
+  UserName: {type: String, require:true},
+  password: {type: String,required: true},
+  FirstName: {type: String, required: true},
+  LastName: {type: String, required: true},
+  RentPayment: {type: Number, required:true},
+  
   blockchains: {type:Array}
 });
 // *virtuals* (http://mongoosejs.com/docs/guide.html#virtuals)
@@ -13,20 +19,24 @@ const userSchema = mongoose.Schema({
 // properties that are stored in the database. Here we use it
 // to generate a human readable string based on the address object
 // we're storing in Mongo.
-userSchema.virtual('addressString').get(function() {
-  return `${this.address.building} ${this.address.street}`.trim()});
-// this virtual grabs the most recent grade for a restaurant.
-userSchema.virtual('grade').get(function() {
-  const gradeObj = this.grades.sort((a, b) => {return b.date - a.date})[0] || {};
-  return gradeObj.grade;
-});
+userSchema.virtual('FullName').get(function() {
+  return `${this.FirstName} ${this.LastName}`.trim()});
+
+// userSchema.virtual('Regalia').get(function() {
+//   return this.RentPayment;
+// })
+// this virtual creates a full name from first and last name, this works with .serialize
+
 // this is an *instance method* which will be available on all instances
 // of the model. This method will be used to return an object that only
 // exposes *some* of the fields we want from the underlying data
 userSchema.methods.serialize = function() {
   return {
     id: this._id,
-    name: this.name
+    FullName: this.FullName,
+    EmailAddress: this.EmailAddress,
+    RentPayment: this.RentPayment
+
 
 
 

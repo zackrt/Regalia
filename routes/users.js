@@ -8,13 +8,18 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
   console.log('users post', req.body)
   User.create({
-    email:req.body.email,
+    EmailAddress:req.body.EmailAddress,
+    UserName:req.body.UserName,
     password:req.body.password,
-    firstname:req.body.firstname,
-    lastname:req.body.lastname,
-    rentpayment:req.rentpayment
+    FirstName:req.body.FirstName,
+    LastName:req.body.LastName,
+    RentPayment:req.body.RentPayment
       
-  }).then(user => res.status(201).send("User registered"))
-  .catch(err => { console.error("err"); res.status(500).json({message: 'Internal server error'}); });
+  }).then(user => { 
+    console.log("registered");
+    res.status(201).send(user.serialize());})
+  .catch(err => {
+     console.error("err"); 
+     res.status(500).json({message: 'Internal server error'}); });
 });
 module.exports = router;

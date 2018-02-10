@@ -53,8 +53,8 @@ $(function(){
         	});
 		})
 		$('#register-form').submit(function(e){
-			e.preventDefault;
-			let obj = {email: 'test@regalia.com', password:'testpass'};
+			e.preventDefault();
+			let obj = {EmailAddress: 'test@regalia.com', UserName:'JoeSmith',password:'testpass', FirstName:'Joe', LastName:'Smith', RentPayment:1100};
 			$.ajax({
             	url: '/users', 
 	            type: 'POST', 
@@ -62,7 +62,7 @@ $(function(){
 	            dataType: 'json',
 	            success: function(result) 
 	            { 
-	            	$(".registration-results").text("Registered!") 
+	            	$(".registration-results").text(`${result} Registered!`) 
 	            } 
         	});
 		})

@@ -1,0 +1,8 @@
+to do
+
+1) finish the serialize function so that you are sending all of the data you need
+
+2) iterate through the object on the front (so inside homescreen.js) so that the serialized data is displayed
+object iteration:   for(let key in obj){ }
+“key”  = property name
+obj[key] will be the property value
