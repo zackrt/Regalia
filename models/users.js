@@ -33,14 +33,10 @@ userSchema.virtual('FullName').get(function() {
 userSchema.methods.serialize = function() {
   return {
     id: this._id,
-    FullName: this.FullName,
     EmailAddress: this.EmailAddress,
+    FullName: this.FullName,
+    UserName:this.UserName,
     RentPayment: this.RentPayment
-
-
-
-
-    
   };
 }
 
