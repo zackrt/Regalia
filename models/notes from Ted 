@@ -1,5 +1,9 @@
 to do
+2/11/18
+1)
+see if you can plug that into the login function from the jwt exercise
 
+2/10/18
 1) finish the serialize function so that you are sending all of the data you need (added UserName & EmailAddress)
 
 2) iterate through the object on the frontend (somewhere inside homescreen.js) so that the serialized data is displayed
