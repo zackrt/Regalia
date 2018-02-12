@@ -173,6 +173,21 @@ router.post('/', jsonParser, (req, res) => {
       res.status(500).json({code: 500, message: 'Internal server error'});
     });
 });
+//declare localAuth & use .authenticate
+const localAuth = passport.authenticate('local', {session: false});
+router.use(bodyParser.json());
+// The user provides a username and password to login: must create end point '/login'
+router.post('/login', localAuth, (req, res) => {
+  const authToken = createAuthToken(req.user.serialize());
+  res.json({authToken});
+});
 
+const jwtAuth = passport.authenticate('jwt', {session: false});
+
+// The user exchanges a valid JWT for a new one with a later expiration
+router.post('/refresh', jwtAuth, (req, res) => {
+  const authToken = createAuthToken(req.user);
+  res.json({authToken});
+});
 
 module.exports = router;
