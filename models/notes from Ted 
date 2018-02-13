@@ -2,6 +2,7 @@ to do
 2/11/18
 1)
 see if you can plug that into the login function from the jwt exercise
+2. clean up user.js, clean up app.js
 
 2/10/18
 1) finish the serialize function so that you are sending all of the data you need (added UserName & EmailAddress)
@@ -150,3 +151,7 @@ router.get('/', (req, res) => {
 });
 
 module.exports = {router};
+
+to add: styles to style.css
+change image in sample image
+change dropdown to link
