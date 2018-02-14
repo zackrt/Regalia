@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+const passport = require('passport');
 const { User } = require('../models/users');
+
 
 
 /* GET users listing. */
@@ -27,7 +29,7 @@ router.get('/', function(req, res, next) {
 //      res.status(500).json({message: 'Internal server error'}); });
 // });
 router.post('/', jsonParser, (req, res) => {
-  const requiredFields = ['UserName', 'password', 'FirstName', 'LastName', 'EmailAddress' ];
+  const requiredFields = [ 'password', 'FirstName', 'LastName', 'EmailAddress' ];
   const missingField = requiredFields.find(field => !(field in req.body));
 
   if (missingField) {
@@ -40,7 +42,7 @@ router.post('/', jsonParser, (req, res) => {
     });
   }
 //check to see if datatypes are correct
-  const stringFields = ['UserName', 'password', 'FirstName', 'LastName', 'EmailAddress'];
+  const stringFields = [ 'password', 'FirstName', 'LastName', 'EmailAddress'];
   const nonStringField = stringFields.find(
     field => field in req.body && typeof req.body[field] !== 'string'
   );
@@ -89,7 +91,7 @@ router.post('/', jsonParser, (req, res) => {
       location: nonTrimmedField
     });
   }
-
+//ASK TED abt removing username:
   const sizedFields = {
     UserName: {
       min: 1
@@ -126,17 +128,16 @@ router.post('/', jsonParser, (req, res) => {
     });
   }
 
-  let {UserName, password, FirstName = '', LastName = '', EmailAddress , RentPayment} = req.body;
+  let {password, FirstName = '', LastName = '', EmailAddress , RentPayment} = req.body;
   // Username and password come in pre-trimmed, otherwise we throw an error
   // before this
   FirstName = FirstName.trim();
   LastName = LastName.trim();
   EmailAddress = EmailAddress.trim();
-  UserName = UserName.trim();
   password = password.trim();
 
 
-  return User.find({UserName})
+  return User.find({EmailAddress})
     .count()
     .then(count => {
       if (count > 0) {
@@ -144,8 +145,8 @@ router.post('/', jsonParser, (req, res) => {
         return Promise.reject({
           code: 422,
           reason: 'ValidationError',
-          message: 'Username already taken',
-          location: 'username'
+          message: 'Email Address already taken',
+          location: 'EmailAddress'
         });
       }
       // If there is no existing user, hash the password
@@ -153,11 +154,10 @@ router.post('/', jsonParser, (req, res) => {
     })
     .then(hash => {
       return User.create({
-        UserName,
+        EmailAddress,
         password: hash,
         FirstName,
         LastName,
-        EmailAddress,
         RentPayment: Number
       });
     })

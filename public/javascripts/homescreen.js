@@ -54,7 +54,7 @@ $(function(){
 		})
 		$('#register-form').submit(function(e){
 			e.preventDefault();
-			let obj = {EmailAddress: 'test1@regalia.com', UserName:'test'+Math.floor(Math.random()*1000).toString(),password:'test1pass', FirstName:'Joey', LastName:'Smith', RentPayment:1200};
+			let obj = {EmailAddress: 'test1@regalia.com',password:'test1pass', FirstName:'Joey', LastName:'Smith', RentPayment:1200};
 			$.ajax({
             	url: '/users', 
 	            type: 'POST', 
