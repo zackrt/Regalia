@@ -2,43 +2,64 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
+<<<<<<< HEAD:app.js
 const passport = require('passport');
 var path = require('path');
+=======
+const path = require('path');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
+>>>>>>> 6f46eafac3a981ba0a3c887468af05de0a5312ee:server.js
 
-var logger = require('morgan');
+const routes = require('./routes/index');
+const users = require('./routes/users');
+const blockchain = require('./routes/blockchain');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var blockchain = require('./routes/blockchain');
-// Mongoose internally uses a promise-like object,
-// but its better to make Mongoose use built in es6 promises
 mongoose.Promise = global.Promise;
-// config.js is where we control constants for entire
-// app like PORT and DATABASE_URL
+
 const { PORT, DATABASE_URL } = require('./config');
+<<<<<<< HEAD:app.js
 //const { User } = require('./models/users');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 // view engine setup .use means it applies to all end points
+=======
+const { User } = require('./models/users');
 
-app.use(logger('dev'));
 
+const app = express();
+>>>>>>> 6f46eafac3a981ba0a3c887468af05de0a5312ee:server.js
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(logger('common'));
 app.use(express.static(path.join(__dirname, 'public')));
+<<<<<<< HEAD:app.js
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 passport.use(localStrategy); 
 passport.use(jwtStrategy);
 app.use('/', routes);
+=======
+//app.use('/', routes);
+>>>>>>> 6f46eafac3a981ba0a3c887468af05de0a5312ee:server.js
 app.use('/users', users);
 app.use('/blockchain', blockchain);
-// catch-all endpoint if client makes request to non-existent endpoint
-app.use('*', function (req, res) {
-  res.status(404).json({ message: 'Not Found' });
-});
-// closeServer needs access to a server object, but that only
-// gets created when `runServer` runs, so we declare `server` here
-// and then assign a value to it in run
+
+
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
+//   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+//   next();
+// });
+
+// app.use('*', function (req, res) {
+//   res.status(404).json({ message: 'nothing to see here' });
+// });
+
+
 let server;
-// this function connects to our database, then starts the server
+
 function runServer(databaseUrl, port = PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, err => {

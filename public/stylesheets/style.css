@@ -13,7 +13,13 @@ a {
 	width:70%;
 	margin:20px auto;
 }
+<<<<<<< HEAD
 
 h4 {
   font-size: 2em;
+=======
+.form-response {
+	margin:20px auto;
+	display:none;
+>>>>>>> 6f46eafac3a981ba0a3c887468af05de0a5312ee
 }
