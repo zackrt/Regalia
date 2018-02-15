@@ -67,4 +67,20 @@ $(function(){
 	            } 
         	});
 		})
+
+		$('#login-form').submit(function(e){
+			e.preventDefault();
+			let obj = {EmailAddress: 'test1@regalia.com',password:'test1pass'};
+			$.ajax({
+            	url: '/users/login', 
+	            type: 'POST', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+					console.log(result);
+	            	$(".login-form").text(`${result.EmailAddress}${result.FullName} Login`) 
+	            } 
+        	});
+		})
 })

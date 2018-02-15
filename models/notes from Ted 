@@ -155,3 +155,7 @@ module.exports = {router};
 to add: styles to style.css
 change image in sample image
 change dropdown to link
+
+create a user page: regalia and rent payment users.html
+jQuery js folder with ajax with a get call
+

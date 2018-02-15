@@ -2,7 +2,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
-
+const passport = require('passport');
 var path = require('path');
 
 var logger = require('morgan');
@@ -24,7 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+passport.use(localStrategy); 
+passport.use(jwtStrategy);
 app.use('/', routes);
 app.use('/users', users);
 app.use('/blockchain', blockchain);
