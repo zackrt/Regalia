@@ -54,7 +54,7 @@ $(function(){
 		})
 		$('#register-form').submit(function(e){
 			e.preventDefault();
-			let obj = {username: 'exampleUser', password:'examplePass', EmailAddress: 'test@test.com', FirstName:'Joey', LastName:'Smith', RentPayment:1200};
+			let obj = {password:'examplePass', EmailAddress: 'test@test.com', FirstName:'Joey', LastName:'Smith', RentPayment:1200};
 			$.ajax({
             	url: '/users', 
 	            type: 'POST', 
@@ -69,7 +69,7 @@ $(function(){
 		})
 		$('#login-form').submit(function(e){
 			e.preventDefault();
-			let obj = {username: 'exampleUser',password:'examplePass'};
+			let obj = {EmailAddress: 'test@test.com',password:'examplePass'};
 			$.ajax({
             	url: '/api/auth/login', 
 	            type: 'POST', 

@@ -5,11 +5,6 @@ const bcrypt = require ('bcryptjs');
 
 // this is our schema to represent a restaurant
 const userSchema = mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true
-  },
   EmailAddress: {type: String, required: true},
   password: {type: String,required: true},
   FirstName: {type: String, required: true},
@@ -20,6 +15,8 @@ const userSchema = mongoose.Schema({
 
 userSchema.virtual('FullName').get(function() {
   return `${this.FirstName} ${this.LastName}`.trim()});
+userSchema.virtual('username').get(function() {
+  return `${this.EmailAddress}`.trim()});
 
 userSchema.methods.serialize = function() {
   return {

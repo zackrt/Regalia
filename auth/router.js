@@ -9,7 +9,7 @@ const router = express.Router();
 
 const createAuthToken = function(user) {
   return jwt.sign({user}, config.JWT_SECRET, {
-    subject: user.username,
+    subject: user.EmailAddress,
     expiresIn: config.JWT_EXPIRY,
     algorithm: 'HS256'
   });
@@ -20,7 +20,6 @@ router.use(bodyParser.json());
 
 
 router.post('/login', localAuth, (req, res) => {
-	let serialized = req.user.serialize();
    	const authToken = createAuthToken(req.user.serialize());
    	res.json({authToken});
 });

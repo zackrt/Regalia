@@ -8,10 +8,9 @@ const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 const { User } = require('../models/users');
 const { JWT_SECRET } = require('../config');
 
-const localStrategy = new LocalStrategy((username, password, callback) => {
-  console.log('localStrategy')
+const localStrategy = new LocalStrategy({usernameField: 'EmailAddress'}, (EmailAddress, password, callback) => {
   let user;
-  User.findOne({ username })
+  User.findOne({ EmailAddress })
     .then(_user => {
       user = _user;
       if (!user) {
@@ -19,7 +18,7 @@ const localStrategy = new LocalStrategy((username, password, callback) => {
         // Any errors like this will be handled in the catch block.
         return Promise.reject({
           reason: 'LoginError',
-          message: 'Incorrect username or password'
+          message: 'Incorrect email address or password'
         });
       }
       return user.validatePassword(password);
@@ -28,7 +27,7 @@ const localStrategy = new LocalStrategy((username, password, callback) => {
       if (!isValid) {
         return Promise.reject({
           reason: 'LoginError',
-          message: 'Incorrect username or password'
+          message: 'Incorrect email address or password'
         });
       }
       return callback(null, user);
