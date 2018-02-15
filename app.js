@@ -8,10 +8,10 @@ var path = require('path');
 
 var logger = require('morgan');
 
-//var routes = require('./routes/index');
+
 var users = require('./routes/users');
 var blockchain = require('./routes/blockchain');
-//var login = require('./routes/auth');
+
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
 
@@ -30,10 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
-app.use('/auth/loginfgdf', authRouter);
+app.use('/api/auth/', authRouter);
 app.use('/users', users);
 app.use('/blockchain', blockchain);
-const jwtAuth = passport.authenticate('jwt', { session: false });
+
 
 
 app.use('*', function (req, res) {

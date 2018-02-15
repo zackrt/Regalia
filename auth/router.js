@@ -19,14 +19,15 @@ const localAuth = passport.authenticate('local', {session: false});
 router.use(bodyParser.json());
 
 
-router.post('/login', (req, res) => {
-  const authToken = createAuthToken(req.user.serialize());
-  res.json({authToken});
+router.post('/login', localAuth, (req, res) => {
+	let serialized = req.user.serialize();
+   	const authToken = createAuthToken(req.user.serialize());
+   	res.json({authToken});
 });
 
-const jwtAuth = passport.authenticate('jwt', {session: false});
 
-// The user exchanges a valid JWT for a new one with a later expiration
+
+const jwtAuth = passport.authenticate('jwt', {session: false});
 router.post('/refresh', jwtAuth, (req, res) => {
   const authToken = createAuthToken(req.user);
   res.json({authToken});

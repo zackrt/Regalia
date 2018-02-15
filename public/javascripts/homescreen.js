@@ -54,7 +54,7 @@ $(function(){
 		})
 		$('#register-form').submit(function(e){
 			e.preventDefault();
-			let obj = {EmailAddress: 'test1@regalia.com',password:'test1pass', FirstName:'Joey', LastName:'Smith', RentPayment:1200};
+			let obj = {username: 'exampleUser', password:'examplePass', EmailAddress: 'test@test.com', FirstName:'Joey', LastName:'Smith', RentPayment:1200};
 			$.ajax({
             	url: '/users', 
 	            type: 'POST', 
@@ -69,17 +69,14 @@ $(function(){
 		})
 		$('#login-form').submit(function(e){
 			e.preventDefault();
-			alert('hi')
-			let obj = {EmailAddress: 'test1@regalia.com',password:'test1pass'};
+			let obj = {username: 'exampleUser',password:'examplePass'};
 			$.ajax({
-            	url: '/auth/login', 
+            	url: '/api/auth/login', 
 	            type: 'POST', 
 	            data: obj, 
-	            dataType: 'json',
 	            success: function(result) 
 	            { 
-					console.log(result);
-	            	//$(".registration-results").text(`${result.EmailAddress}${result.FullName} Registered!`) 
+	            	$(".login-form-response").css("display", "block").text(`Login Successful:  jwt = ${result.authToken}`) 
 	            } 
         	});
 		})

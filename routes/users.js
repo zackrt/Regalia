@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/', jsonParser, (req, res) => {
-  const requiredFields = [ 'password', 'FirstName', 'LastName', 'EmailAddress' ];
+  const requiredFields = [ 'username', 'password', 'FirstName', 'LastName', 'EmailAddress' ];
   const missingField = requiredFields.find(field => !(field in req.body));
 
   if (missingField) {
@@ -30,7 +30,7 @@ router.post('/', jsonParser, (req, res) => {
     });
   }
 //check to see if datatypes are correct
-  const stringFields = [ 'password', 'FirstName', 'LastName', 'EmailAddress'];
+  const stringFields = [ 'username', 'password', 'FirstName', 'LastName', 'EmailAddress'];
   const nonStringField = stringFields.find(
     field => field in req.body && typeof req.body[field] !== 'string'
   );
@@ -45,7 +45,7 @@ router.post('/', jsonParser, (req, res) => {
     });
   }
 
-  const explicityTrimmedFields = ['password'];
+  const explicityTrimmedFields = ['username', 'password'];
   const nonTrimmedField = explicityTrimmedFields.find(
     field => req.body[field].trim() !== req.body[field]
   );
@@ -92,14 +92,14 @@ router.post('/', jsonParser, (req, res) => {
     });
   }
 
-  let {password, FirstName = '', LastName = '', EmailAddress , RentPayment} = req.body;
+  let {username, password, FirstName = '', LastName = '', EmailAddress , RentPayment} = req.body;
   // Username and password come in pre-trimmed, otherwise we throw an error
   // before this
   FirstName = FirstName.trim();
   LastName = LastName.trim();
   EmailAddress = EmailAddress.trim();
   password = password.trim();
-
+  username = username.trim();
 
   return User.find({EmailAddress})
     .count()
@@ -119,6 +119,7 @@ router.post('/', jsonParser, (req, res) => {
     .then(hash => {
       console.log('here1')
       return User.create({
+        username, 
         EmailAddress,
         password: hash,
         FirstName,
