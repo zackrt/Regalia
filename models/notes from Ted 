@@ -155,3 +155,11 @@ module.exports = {router};
 to add: styles to style.css
 change image in sample image
 change dropdown to link
+
+1) create a user specific home page
+2) using the logic from the jwt exercise (specifically the ‘protected’ page) make that page unreadable unless there’s a jwt auth in place (screenshot coming)
+3) then, you need to have the login page redirect to the correct user page with the user data pulled 
+4) then, let’s set up your blockchain logic
+5) then, let’s go back in and remove the dummy data from the registration/login
+6) then let’s set up your mocha/chai tests
+7) then you may want to buff and polish the styling
