@@ -3,7 +3,8 @@ const express = require('express');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
 const config = require('../config');
 const router = express.Router();
 
@@ -16,14 +17,14 @@ const createAuthToken = function(user) {
 };
 
 const localAuth = passport.authenticate('local', {session: false});
-router.use(bodyParser.json());
-
+router.use(bodyParser.json()); 
 
 router.post('/login', localAuth, (req, res) => {
    	const authToken = createAuthToken(req.user.serialize());
+   	const jwtAuth = passport.authenticate('jwt', { session: false });
    	res.json({authToken});
+   	
 });
-
 
 
 const jwtAuth = passport.authenticate('jwt', {session: false});

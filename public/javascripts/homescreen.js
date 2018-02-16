@@ -54,7 +54,7 @@ $(function(){
 		})
 		$('#register-form').submit(function(e){
 			e.preventDefault();
-			let obj = {password:'examplePass', EmailAddress: 'test@test.com', FirstName:'Joey', LastName:'Smith', RentPayment:1200};
+			let obj = {password:'examplePass', EmailAddress: 'test1@test.com', FirstName:'Joey', LastName:'Smith', RentPayment:1200};
 			$.ajax({
             	url: '/users', 
 	            type: 'POST', 
@@ -62,22 +62,26 @@ $(function(){
 	            dataType: 'json',
 	            success: function(result) 
 	            { 
-					console.log(result);
 	            	$(".registration-results").text(`${result.EmailAddress}${result.FullName} Registered!`) 
 	            } 
         	});
 		})
 		$('#login-form').submit(function(e){
 			e.preventDefault();
-			let obj = {EmailAddress: 'test@test.com',password:'examplePass'};
+			let obj = {EmailAddress: 'test1@test.com',password:'examplePass'};
 			$.ajax({
             	url: '/api/auth/login', 
 	            type: 'POST', 
 	            data: obj, 
 	            success: function(result) 
 	            { 
-	            	$(".login-form-response").css("display", "block").text(`Login Successful:  jwt = ${result.authToken}`) 
-	            } 
+	            	//$(".login-form-response").css("display", "block").text(`Login Successful:  jwt = ${result.authToken}`) 
+	            	window.location.href = `/logged_in.html?token=${result.authToken}`
+	            }, 
+	            error: function() 
+	            { 
+	            	$(".login-form-response").css("display", "block").text(`Something went wrong -- please try again`) 
+	            }  
         	});
 		})
 })
