@@ -2,12 +2,21 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
+<<<<<<< HEAD:app.js
 const passport = require('passport');
 
 var path = require('path');
+=======
+const path = require('path');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
+>>>>>>> 6f46eafac3a981ba0a3c887468af05de0a5312ee:server.js
 
-var logger = require('morgan');
+const routes = require('./routes/index');
+const users = require('./routes/users');
+const blockchain = require('./routes/blockchain');
 
+<<<<<<< HEAD:app.js
 
 var users = require('./routes/users');
 var blockchain = require('./routes/blockchain');
@@ -22,19 +31,34 @@ const { PORT, DATABASE_URL } = require('./config');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
+=======
+mongoose.Promise = global.Promise;
 
-app.use(logger('dev'));
+const { PORT, DATABASE_URL } = require('./config');
+const { User } = require('./models/users');
 
+
+const app = express();
+>>>>>>> 6f46eafac3a981ba0a3c887468af05de0a5312ee:server.js
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(logger('common'));
 app.use(express.static(path.join(__dirname, 'public')));
+<<<<<<< HEAD:app.js
 
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 app.use('/api/auth/', authRouter);
+=======
+//app.use('/', routes);
+>>>>>>> 6f46eafac3a981ba0a3c887468af05de0a5312ee:server.js
 app.use('/users', users);
 app.use('/blockchain', blockchain);
 
 
+<<<<<<< HEAD:app.js
 
 app.use('*', function (req, res) {
   res.status(404).json({ message: 'Not Found' });
@@ -45,6 +69,22 @@ app.use('*', function (req, res) {
 
 
 let server;
+=======
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
+//   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+//   next();
+// });
+
+// app.use('*', function (req, res) {
+//   res.status(404).json({ message: 'nothing to see here' });
+// });
+
+
+let server;
+
+>>>>>>> 6f46eafac3a981ba0a3c887468af05de0a5312ee:server.js
 function runServer(databaseUrl, port = PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, err => {
