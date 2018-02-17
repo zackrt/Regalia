@@ -16,7 +16,6 @@ const routes = require('./routes/index');
 const users = require('./routes/users');
 const blockchain = require('./routes/blockchain');
 
-<<<<<<< HEAD:app.js
 
 var users = require('./routes/users');
 var blockchain = require('./routes/blockchain');
@@ -31,15 +30,6 @@ const { PORT, DATABASE_URL } = require('./config');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
-=======
-mongoose.Promise = global.Promise;
-
-const { PORT, DATABASE_URL } = require('./config');
-const { User } = require('./models/users');
-
-
-const app = express();
->>>>>>> 6f46eafac3a981ba0a3c887468af05de0a5312ee:server.js
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
