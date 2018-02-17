@@ -73,10 +73,9 @@ $(function(){
             	url: '/api/auth/login', 
 	            type: 'POST', 
 	            data: obj, 
-	            success: function(result) 
+	            success: function(result)
 	            { 
-	            	//$(".login-form-response").css("display", "block").text(`Login Successful:  jwt = ${result.authToken}`) 
-	            	window.location.href = `/logged_in.html?token=${result.authToken}`
+	            	window.location.href = `/logged_in.html?token=${result.authToken}&EmailAddress=${obj.EmailAddress}`
 	            }, 
 	            error: function() 
 	            { 

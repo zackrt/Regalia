@@ -10,12 +10,14 @@ $(function(){
 	});
 
 	let token = $_GET['token']
-
+	let EmailAddress = $_GET['EmailAddress']
 	$.ajax({
-	    url: '/logged_in',
+	    url: `/logged_in`,
 	    type: 'GET',
+	    data: {EmailAddress},
 	    headers: { 'authorization': `Bearer ${token}`},
 	    success:function(data){
+	    	console.log("EmailAddress", EmailAddress)
 	    	$(".no-problem").css('display', 'block');
 	    	$(".userData").text(data);
 	    },
