@@ -155,3 +155,24 @@ module.exports = {router};
 to add: styles to style.css
 change image in sample image
 change dropdown to link
+
+2/18/18
+to do:
+ dealing with Blockchain logic inside blockchain.js
+for line 77 $.val() $(‘.name_of_input_class’).val()
+
+also the logged in zone with have all the crud calls
+
+
+what do I want to have happen in the user page:
+logic for logged-in page
+
+we have all the data,
+
+and we have jQuery
+
+and bootstrap for css
+
+how it should look and functional?
+
+

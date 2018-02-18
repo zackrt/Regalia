@@ -9,11 +9,14 @@ router.get('/', jwtAuth,(req, res) => {
    console.log('GET THE USER DATA AND SEND IT TO THE PAGE',req.query)
    //ZACK YOU NOW HAVE THE EMAIL ADDRESS SO YOU CAN MAKE YOUR MONGOOSE CALL
 
-   // the email address is in the variable:   req.query.EmailAddress
-
-   User.find({EmailAddress: req.query.EmailAddress})
-
-   res.json({userdata:'this is the user data'})
+   // the email address is in the variable: users  req.query.EmailAddress
+   try {
+        User.findOne({EmailAddress: req.query.EmailAddress}).then(user => {
+            res.json({user:user.serialize()})
+        })
+   } catch(err) {
+       res.json({err})
+   }
 
 });
 

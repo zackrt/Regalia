@@ -11,15 +11,20 @@ $(function(){
 
 	let token = $_GET['token']
 	let EmailAddress = $_GET['EmailAddress']
+	//add RentPayment to display 
+	
 	$.ajax({
 	    url: `/logged_in`,
 	    type: 'GET',
 	    data: {EmailAddress},
 	    headers: { 'authorization': `Bearer ${token}`},
 	    success:function(data){
+			console.log("this is the data", data);
 	    	console.log("EmailAddress", EmailAddress)
 	    	$(".no-problem").css('display', 'block');
-	    	$(".userData").text(data);
+			$(".Email-Address").text(EmailAddress);
+			$(".Rent-Payment").text(numberWithCommas(data.user.RentPayment));
+			
 	    },
 	    error: function(){
 	    	$(".problem").css('display', 'block')
@@ -27,6 +32,60 @@ $(function(){
 	    	//should return 
 	    }
 	});
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	 }
+	 $('body').on('click', '.testingPost', function(){
+    	let obj = {};
+        $.ajax({
+            	url: '/blockchain', 
+	            type: 'POST', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".alert-success").text(result.message) 
+	            } 
+        	});
+    	})
 
-
+    $('body').on('click', '.testingDelete', function(){
+    	let obj = {};
+        $.ajax({
+            	url: '/blockchain', 
+	            type: 'DELETE', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".alert-danger").text(result.message) 
+	            } 
+        	});
+    	})
+    $('body').on('click', '.testingGet', function(){
+    	let obj = {};
+        $.ajax({
+            	url: '/blockchain', 
+	            type: 'GET', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".alert-warning").text(result.message) 
+	            } 
+        	});
+    	})
+    $('body').on('click', '.testingPut', function(){
+    	let obj = {};
+        $.ajax({
+            	url: '/blockchain', 
+	            type: 'PUT', 
+	            data: obj, 
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".alert-info").text(result.message) 
+	            } 
+        	});
+		})
 })
