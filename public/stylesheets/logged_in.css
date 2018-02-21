@@ -15,4 +15,15 @@
 	justify-content: center;
 	color: darkorange;
 }
-
+.btn-section {
+	display:flex;
+	margin:10px;
+	flex-direction: row-reverse;
+}
+.panel-success {
+	display: flex;
+	flex-direction: space-around;
+}
+.btn {
+	margin: 10px;
+}
