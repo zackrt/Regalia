@@ -3,5 +3,16 @@
 	display: none;
 	margin-top:100px;
 }
+.greeting {
+	display: flex;
+	font-size: 1.5em;
+	justify-content: center;
 
+}
+.regalia-amount {
+	display: flex;
+	font-size: 1.4em;
+	justify-content: center;
+	color: darkorange;
+}
 
