@@ -27,3 +27,22 @@
 .btn {
 	margin: 10px;
 }
+@media (max-width:380px) {
+.body {
+	width: 380px;
+}
+.panel-success {
+	margin:0;
+	
+	outline: dotted 1px red;
+}
+.btn-section {
+	display: flex;
+	flex-direction: column-reverse;
+	outline: dotted 1px red;
+}
+.regalia-amount {
+	padding-bottom: 1em;
+}
+
+}
