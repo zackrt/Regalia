@@ -2,6 +2,10 @@
 Pay your rent. Get Regalia
 The crytocurrency that you receive when you pay your rent! 
 Create an account today
+Log your rent payment
+Send Regalia to users*
+
+*feature coming soon 
 
 User Agreement:
 
