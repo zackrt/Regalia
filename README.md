@@ -3,7 +3,9 @@ Pay your rent. Get Regalia
 The crytocurrency that you receive when you pay your rent! 
 Create an account today
 Log your rent payment
-Send Regalia to users*
+Send Regalia to other users*
+
+Technology featured: HTML5, CSS, JAVASCRIPT, EXPRESS.JS, MOCHA, CHAI, CHAI-HTTP, MONGODB, MONGOOSE, HEROKU, TRAVISCI, NODE.JS, JQUERY
 
 *feature coming soon 
 
