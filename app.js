@@ -12,6 +12,7 @@ var logger = require('morgan');
 var users = require('./routes/users');
 var blockchain = require('./routes/blockchain');
 var logged_in = require('./routes/logged_in');
+var seeUsers = require('./routes/see_users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
 
@@ -35,6 +36,7 @@ app.use('/api/auth/', authRouter);
 app.use('/users', users);
 app.use('/blockchain', blockchain);
 app.use('/logged_in', logged_in);
+app.use('/see_users', seeUsers);
 
 
 app.use('*', function (req, res) {

@@ -12,7 +12,9 @@ $(function(){
 	let token = $_GET['token']
 	let EmailAddress = $_GET['EmailAddress']
 	//add RentPayment to display 
-	
+	$('#seeusers').click(function(){
+		window.location.href = `/see-users.html?token=${token}`
+	})
 	$.ajax({
 	    url: `/logged_in`,
 	    type: 'GET',
@@ -24,7 +26,10 @@ $(function(){
 	    	$(".no-problem").css('display', 'block');
 			$(".Email-Address").text(EmailAddress);
 			$(".Rent-Payment").text(numberWithCommas(data.user.RentPayment));
-			
+			$("#inputEmail3").val(EmailAddress);
+			$("#inputFirstName3").val(data.user.FirstName);
+			$("#inputLastName3").val(data.user.LastName);
+			$("#inputRentPayment3").val(data.user.RentPayment);
 	    },
 	    error: function(){
 	    	$(".problem").css('display', 'block')

@@ -23,6 +23,8 @@ userSchema.methods.serialize = function() {
     id: this._id,
     username: this.username,
     EmailAddress: this.EmailAddress,
+    FirstName: this.FirstName,
+    LastName: this.LastName,
     FullName: this.FullName,
     RentPayment: this.RentPayment
   };
