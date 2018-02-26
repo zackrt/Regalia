@@ -16,26 +16,5 @@ router.get('/', jwtAuth,(req, res) => {
    }
 
 });
-//
-router.delete('/', function(req, res) {
-    try {
-        User.delete({})
-        res.status(200).json({ message: "Your Account was deleted!" }); 
-    } catch (e) {
-        res.status(500).json({ message: 'Internal server error, account not deleted' });
-    }
-});
-//update
-router.put('/', function(req, res) {
-    try {
-        Users.update({
-            
-        })
-        res.status(200).json({ message: "blockchain.js put was hit!" }); 
-    } catch (e) {
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
-
 
 module.exports = router;

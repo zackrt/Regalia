@@ -19,5 +19,25 @@ router.get('/', jwtAuth,(req, res) => {
    }
 
 });
+//delete user account
+router.delete('/', jwtAuth, (req, res) => {
+    try {
+        User.deleteOne({EmailAddress: req.query.EmailAddress}).then(users => {
+        res.status(200).json({ message: "Your Account was deleted!" })
+    }) 
+    } catch (e) {
+        res.status(500).json({ message: 'Internal server error, account cannot deleted' });
+    }
+});
+//update account 
+router.put('/', jwtAuth, (req, res) =>{
+    try {
+        Users.updateOne({EmailAddress: req.query.EmailAddress}).then(users => {
+            res.status(200).json({ message: "blockchain.js Update/Put was hit!" });
+        })  
+    } catch (e) {
+        res.status(500).json({ message: 'Internal server error, account cannot be udated' });
+    }
+});
 
 module.exports = router;
