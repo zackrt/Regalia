@@ -11,6 +11,8 @@ Technology featured: HTML5, CSS, JAVASCRIPT, EXPRESS.JS, MOCHA, CHAI, CHAI-HTTP,
 
 User Agreement:
 
+LEGAL:
+
 Regalia Crytocurrency complies with KYC: Know Your Customer reports & regulation, All falsified user accounts will be deleted, and all Regalia will be subsumed:
 
 *Know your customer ('KYC') is the process of a business identifying and verifying the identity of its clients. The term is also used to refer to the bank and anti-money laundering regulations which governs these activities.
