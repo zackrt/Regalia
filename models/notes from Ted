@@ -182,4 +182,9 @@ work on the modals: User Interface-
 
     2.Delete account,  Are you sure you want to delete (and lose your crypto)?
 
+1. data is an array objects, as we loop through it.
+
+2. using a .find in mongoose,  program the front-end & back-end 
+add a button handler in see-users front end
+a click handler. 
 

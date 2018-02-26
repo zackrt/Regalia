@@ -13,7 +13,7 @@ $(function(){
 	let EmailAddress = $_GET['EmailAddress']
 	//add RentPayment to display 
 	$('#seeusers').click(function(){
-		window.location.href = `/see-users.html?token=${token}`
+		window.location.href = `/see-users.html?token=${token}&EmailAddress=${EmailAddress}`
 	})
 	$.ajax({
 	    url: `/logged_in`,
