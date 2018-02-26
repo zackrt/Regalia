@@ -187,4 +187,10 @@ work on the modals: User Interface-
 2. using a .find in mongoose,  program the front-end & back-end 
 add a button handler in see-users front end
 a click handler. 
+to add all regalia to homescreen, landing page.
+
+1) on your client side js make an ajax call to the route for that data
+
+2) on your server side receive that ajax call and ping the database and get all of the rent payments
+3) add all of those payments together, then send them back to client side
 

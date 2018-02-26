@@ -30,6 +30,13 @@
 .btn-glyphicon {
 	font-size: 1.2em;
 }
+.modal-btn .glyphicon {
+	font-size: 1em;
+}
+.modal-glyphicon {
+	display:inline;
+	font-size: 1.2em;
+}
 /* for desktop */
 @media (min-width:768px) {
 	.glyphicon {
@@ -50,5 +57,9 @@
 	.btn {
 		margin-left: 10px;
 		margin-right: 10px;
+	}
+	.modal-glyphicon {
+		display:inline;
+		font-size: 1.2em;
 	}
 }
