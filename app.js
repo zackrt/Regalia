@@ -13,6 +13,8 @@ var users = require('./routes/users');
 var blockchain = require('./routes/blockchain');
 var logged_in = require('./routes/logged_in');
 var seeUsers = require('./routes/see_users');
+var regaliaTotal = require('./routes/regalia');
+
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
 
@@ -37,6 +39,7 @@ app.use('/users', users);
 app.use('/blockchain', blockchain);
 app.use('/logged_in', logged_in);
 app.use('/see_users', seeUsers);
+app.use('/regalia', regaliaTotal);
 
 
 app.use('*', function (req, res) {

@@ -1,4 +1,15 @@
 $(function(){
+	
+	$.ajax({
+		url: '/regalia/total', 
+		type: 'GET',  
+		dataType: 'json',
+		success: function(result) 
+		{ 
+			$(".total-regalia").text(result.total) 
+		} 
+	});
+
     $('body').on('click', '.testingPost', function(){
     	let obj = {};
         $.ajax({

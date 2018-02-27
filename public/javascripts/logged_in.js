@@ -93,7 +93,7 @@ $(function(){
 	            } 
         	});
 		})
-	$('#deleteAccount').click(function(){
+	$('#permanent-delete-account').click(function(){
 			$.ajax({
             	url: `/logged_in`, 
 	            type: 'DELETE', 
@@ -102,7 +102,9 @@ $(function(){
 	            dataType: 'json',
 	            success: function(result) 
 	            { 
-	            	$(".delete-alert-danger").text(result.message) 
+					$(".delete-alert-danger").text(result.message) 
+					//then return to index.html
+					window.location.href = `/index.html`
 	            } 
 			});
 	})
