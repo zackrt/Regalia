@@ -102,9 +102,12 @@ $(function(){
 	            dataType: 'json',
 	            success: function(result) 
 	            { 
-					$(".delete-alert-danger").text(result.message) 
 					//then return to index.html
 					window.location.href = `/index.html`
+					//doesn't display on index.html
+					$(".delete-alert-danger2").text(result.message) 
+					
+					
 	            } 
 			});
 	})
