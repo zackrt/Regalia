@@ -93,4 +93,17 @@ $(function(){
 	            } 
         	});
 		})
+	$('#deleteAccount').click(function(){
+			$.ajax({
+            	url: `/logged_in`, 
+	            type: 'DELETE', 
+				data: {EmailAddress},
+				headers: { 'authorization': `Bearer ${token}`},
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+	            	$(".delete-alert-danger").text(result.message) 
+	            } 
+			});
+	})
 })

@@ -33,7 +33,7 @@ router.delete('/', jwtAuth, (req, res) => {
 router.put('/', jwtAuth, (req, res) =>{
     try {
         Users.updateOne({EmailAddress: req.query.EmailAddress}).then(users => {
-            res.status(200).json({ message: "blockchain.js Update/Put was hit!" });
+            res.status(200).json({ message: "Update/Put was hit!" });
         })  
     } catch (e) {
         res.status(500).json({ message: 'Internal server error, account cannot be udated' });
