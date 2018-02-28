@@ -1,5 +1,13 @@
 $(function(){
-	
+
+	// var $_GET = {};
+	// document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+	// 	function delete(s) {
+	// 		return deleteURIComponent(s.split("+").join(" "));
+	// 	}
+	// 	$_GET[delete(arguments[1])] = delete(arguments[2]);
+	// 	});
+
 	$.ajax({
 		url: '/regalia/total', 
 		type: 'GET',  

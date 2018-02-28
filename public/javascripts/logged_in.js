@@ -103,12 +103,17 @@ $(function(){
 	            success: function(result) 
 	            { 
 					//then return to index.html
-					window.location.href = `/index.html`
+					window.location.href = `/index.html?delete=true`
 					//doesn't display on index.html
 					$(".delete-alert-danger2").text(result.message) 
 					
 					
-	            } 
+	            },
+				error: function(){
+					$(".problem").css('display', 'block')
+					console.log('error')
+					//should return 
+				}
 			});
 	})
 })
