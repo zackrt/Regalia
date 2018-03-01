@@ -1,12 +1,15 @@
 $(function(){
 
-	// var $_GET = {};
-	// document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
-	// 	function delete(s) {
-	// 		return deleteURIComponent(s.split("+").join(" "));
-	// 	}
-	// 	$_GET[delete(arguments[1])] = delete(arguments[2]);
-	// 	});
+	 var $_GET = {};
+	 document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+	 	function decode(s) {
+	 		return decodeURIComponent(s.split("+").join(" "));
+	 	}
+	 	$_GET[decode(arguments[1])] = decode(arguments[2]);
+	 	});
+			if($_GET['delete']){
+				$(".delete-alert-danger2").text("Your Account was Deleted!").css("display", "block")
+			}
 
 	$.ajax({
 		url: '/regalia/total', 
@@ -73,7 +76,7 @@ $(function(){
 		})
 		$('#register-form').submit(function(e){
 			e.preventDefault();
-			let obj = {password:'examplePass', EmailAddress: 'test1@test.com', FirstName:'Joey', LastName:'Smith', RentPayment:1200};
+			let obj = {password:'exampleDelete', EmailAddress: 'test1@delete.com', FirstName:'Jim', LastName:'Smith', RentPayment:1200};
 			$.ajax({
             	url: '/users', 
 	            type: 'POST', 
@@ -87,7 +90,7 @@ $(function(){
 		})
 		$('#login-form').submit(function(e){
 			e.preventDefault();
-			let obj = {EmailAddress: 'test1@test.com',password:'examplePass'};
+			let obj = {EmailAddress: 'test1@delete.com',password:'exampleDelete'};
 			$.ajax({
             	url: '/api/auth/login', 
 	            type: 'POST', 

@@ -194,3 +194,5 @@ to add all regalia to homescreen, landing page.
 2) on your server side receive that ajax call and ping the database and get all of the rent payments
 3) add all of those payments together, then send them back to client side
 
+1.) write out a get url parameters script
+2.) 

@@ -21,8 +21,9 @@ router.get('/', jwtAuth,(req, res) => {
 });
 //delete user account
 router.delete('/', jwtAuth, (req, res) => {
+    console.log(req);
     try {
-        User.deleteOne({EmailAddress: req.query.EmailAddress}).then(users => {
+        User.deleteOne({EmailAddress: req.body.EmailAddress}).then(users => {
         res.status(200).json({ message: "Your Account was deleted!" })
     }) 
     } catch (e) {
@@ -31,12 +32,18 @@ router.delete('/', jwtAuth, (req, res) => {
 });
 //update account 
 router.put('/', jwtAuth, (req, res) =>{
+    console.log(req.body, "");
     try {
-        Users.updateOne({EmailAddress: req.query.EmailAddress}).then(users => {
+        Users.update({EmailAddress: req.body.EmailAddress},{FirstName:req.body.FirstName, LastName:req.body.LastName, RentPayment:req.body.RentPayment},{},function(err, numeffected){
+            console.log(err);
+            console.log(numeffected);
+        })
+        .then(users => {
+            console.log("you are here!!")
             res.status(200).json({ message: "Update/Put was hit!" });
         })  
     } catch (e) {
-        res.status(500).json({ message: 'Internal server error, account cannot be udated' });
+        res.status(500).json({ message: 'Internal server error, account cannot be updated' });
     }
 });
 

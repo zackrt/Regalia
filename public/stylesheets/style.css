@@ -27,3 +27,7 @@ h4 {
 	font-size: 1.2em;
 	color: forestgreen;
 }
+.delete-alert-danger2 {
+	display : none;
+	color: red;
+}

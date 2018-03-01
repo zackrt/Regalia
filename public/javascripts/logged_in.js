@@ -115,5 +115,32 @@ $(function(){
 					//should return 
 				}
 			});
+			
+	})
+	$('.update-account').click(function(e){
+		e.preventDefault();
+		let obj = {
+			EmailAddress:$('#inputEmail3').val().trim(),
+			FirstName:$('#inputFirstName3').val().trim(),
+			LastName:$('#inputLastName3').val().trim(),
+			RentPayment:$('#inputRentPayment3').val().trim()
+		};
+			$.ajax({
+            	url: `/logged_in`, 
+	            type: 'PUT', 
+				data: obj,
+				headers: { 'authorization': `Bearer ${token}`},
+	            dataType: 'json',
+	            success: function(result) 
+	            { 
+					
+				console.log(result);
+	            },
+				error: function(){
+					$(".problem").css('display', 'block')
+					console.log('error')
+					//should return 
+				}
+		})
 	})
 })
