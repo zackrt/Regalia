@@ -1,6 +1,5 @@
 'use strict';
 const mongoose = require('mongoose');
-
 const bcrypt = require ('bcryptjs');
 
 // this is our schema to represent a restaurant

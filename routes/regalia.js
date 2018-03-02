@@ -3,7 +3,7 @@ var router = express.Router();
 const { User } = require('../models/users');
 
 
-
+//Display all Regalia in existence
 router.get('/total', (req, res) => {
 
    

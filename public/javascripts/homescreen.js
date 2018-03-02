@@ -1,12 +1,12 @@
 $(function(){
 
-	 var $_GET = {};
-	 document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+	var $_GET = {};
+	document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
 	 	function decode(s) {
 	 		return decodeURIComponent(s.split("+").join(" "));
 	 	}
 	 	$_GET[decode(arguments[1])] = decode(arguments[2]);
-	 	});
+	});
 			if($_GET['delete']){
 				$(".delete-alert-danger2").text("Your Account was Deleted!").css("display", "block")
 			}
