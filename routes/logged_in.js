@@ -31,17 +31,16 @@ router.delete('/', jwtAuth, (req, res) => {
     }
 });
 //update account 
-router.put('/', jwtAuth, (req, res) =>{
-    console.log(req.body, "");
+router.put('/', jwtAuth,(req, res) =>{
     try {
-        Users.update({EmailAddress: req.body.EmailAddress},{FirstName:req.body.FirstName, LastName:req.body.LastName, RentPayment:req.body.RentPayment},{},function(err, numAffected){
-            console.log(err);
-            console.log(numAffected);
-        })
-        .then(users => {
-            console.log("you are here!!")
-            res.status(200).json({ message: "Update/Put was hit!" });
-        })  
+        User.findOneAndUpdate(
+          {EmailAddress: req.body.EmailAddress},
+          req.body,
+          {new: true},
+          (err, newUser) => {
+            if (err) return res.status(500).send(err);
+            res.send(newUser);
+          })
     } catch (e) {
         res.status(500).json({ message: 'Internal server error, account cannot be updated' });
     }

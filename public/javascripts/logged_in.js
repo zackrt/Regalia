@@ -21,12 +21,12 @@ $(function(){
 	    data: {EmailAddress},
 	    headers: { 'authorization': `Bearer ${token}`},
 	    success:function(data){
-			console.log("this is the data", data);
-	    	console.log("EmailAddress", EmailAddress)
 	    	$(".no-problem").css('display', 'block');
 			$(".Email-Address").text(EmailAddress);
 			$(".Rent-Payment").text(numberWithCommas(data.user.RentPayment));
 			$("#inputEmail3").val(EmailAddress);
+			+
++			//fill in update form
 			$("#inputFirstName3").val(data.user.FirstName);
 			$("#inputLastName3").val(data.user.LastName);
 			$("#inputRentPayment3").val(data.user.RentPayment);
@@ -40,59 +40,7 @@ $(function(){
 	function numberWithCommas(x) {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	 }
-	 $('body').on('click', '.testingPost', function(){
-    	let obj = {};
-        $.ajax({
-            	url: '/blockchain', 
-	            type: 'POST', 
-	            data: obj, 
-	            dataType: 'json',
-	            success: function(result) 
-	            { 
-	            	$(".alert-success").text(result.message) 
-	            } 
-        	});
-    	})
 
-    $('body').on('click', '.testingDelete', function(){
-    	let obj = {};
-        $.ajax({
-            	url: '/blockchain', 
-	            type: 'DELETE', 
-	            data: obj, 
-	            dataType: 'json',
-	            success: function(result) 
-	            { 
-	            	$(".alert-danger").text(result.message) 
-	            } 
-        	});
-    	})
-    $('body').on('click', '.testingGet', function(){
-    	let obj = {};
-        $.ajax({
-            	url: '/blockchain', 
-	            type: 'GET', 
-	            data: obj, 
-	            dataType: 'json',
-	            success: function(result) 
-	            { 
-	            	$(".alert-warning").text(result.message) 
-	            } 
-        	});
-    	})
-    $('body').on('click', '.testingPut', function(){
-    	let obj = {};
-        $.ajax({
-            	url: '/blockchain', 
-	            type: 'PUT', 
-	            data: obj, 
-	            dataType: 'json',
-	            success: function(result) 
-	            { 
-	            	$(".alert-info").text(result.message) 
-	            } 
-        	});
-		})
 	$('#permanent-delete-account').click(function(){
 			$.ajax({
             	url: `/logged_in`, 
@@ -117,6 +65,7 @@ $(function(){
 			});
 			
 	})
+	
 	$('.update-account').click(function(e){
 		e.preventDefault();
 		let obj = {
@@ -133,12 +82,14 @@ $(function(){
 	            dataType: 'json',
 	            success: function(result) 
 	            { 
-					$('.update-account-msg').css('display','block')
-				console.log(result);
+					console.log('success = ', result);
+	            	$('#inputFirstName3').val(result.FirstName);
+	           		$('#inputLastName3').val(result.LastName);
+					$('#inputRentPayment3').val(result.RentPayment);
 	            },
-				error: function(){
+				error: function(error){
 					$(".problem").css('display', 'block')
-					console.log('error')
+					console.log('error', error)
 				
 				}
 		})
