@@ -205,7 +205,7 @@ describe('regalia posts API resource', function () {
         //CHANGE POST PARAMETER??
         .then(post => {
           post.EmailAddress.should.equal(updateData.EmailAddress);
-          post.RentPayment.should.equal(updateData.RentPayment;
+          post.RentPayment.should.equal(updateData.RentPayment);
           post.FirstName.should.equal(updateData.FirstName);
           post.LastName.should.equal(updateData.LastName);
         });
