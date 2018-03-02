@@ -34,9 +34,9 @@ router.delete('/', jwtAuth, (req, res) => {
 router.put('/', jwtAuth, (req, res) =>{
     console.log(req.body, "");
     try {
-        Users.update({EmailAddress: req.body.EmailAddress},{FirstName:req.body.FirstName, LastName:req.body.LastName, RentPayment:req.body.RentPayment},{},function(err, numeffected){
+        Users.update({EmailAddress: req.body.EmailAddress},{FirstName:req.body.FirstName, LastName:req.body.LastName, RentPayment:req.body.RentPayment},{},function(err, numAffected){
             console.log(err);
-            console.log(numeffected);
+            console.log(numAffected);
         })
         .then(users => {
             console.log("you are here!!")

@@ -37,6 +37,10 @@
 	display:inline;
 	font-size: 1.2em;
 }
+.update-account-msg {
+	display:none;
+	color:green;
+}
 /* for desktop */
 @media (min-width:768px) {
 	.glyphicon {
@@ -61,5 +65,9 @@
 	.modal-glyphicon {
 		display:inline;
 		font-size: 1.2em;
+	}
+	.update-account-msg {
+		display:none;
+		color:green;
 	}
 }

@@ -133,13 +133,13 @@ $(function(){
 	            dataType: 'json',
 	            success: function(result) 
 	            { 
-					
+					$('.update-account-msg').css('display','block')
 				console.log(result);
 	            },
 				error: function(){
 					$(".problem").css('display', 'block')
 					console.log('error')
-					//should return 
+				
 				}
 		})
 	})
