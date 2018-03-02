@@ -5,7 +5,7 @@ const chaiHttp = require('chai-http');
 const faker = require('faker');
 const mongoose = require('mongoose');
 
-// this makes the should syntax available throughout
+// this makes the Should syntax available throughout
 // this module
 const should = chai.should();
 
@@ -42,10 +42,10 @@ function seedUserData() {
       Users: {
         EmailAddress: faker.EmailAddress(),
         FirstName: faker.name.FirstName(),
-        LastName: faker.name.LastName()
-      },
-      RentPayment: faker.number(),
-      Password: faker.text()
+        LastName: faker.name.LastName(),
+        RentPayment: faker.number.RentPayment(),
+        password: faker.text.password()
+      }
     });
   }
   // this will return a promise
