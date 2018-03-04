@@ -52,7 +52,6 @@ function seedUserData() {
   return User.insertMany(seedData);
 }
 
-
 describe('regalia posts API resource', function () {
 
   before(function () {
@@ -86,7 +85,7 @@ describe('regalia posts API resource', function () {
       //       in db.
       let res;
       return chai.request(app)
-        .get('./routes/users')
+        .get('./routes/see_users')
         .then(_res => {
           res = _res;
           res.should.have.status(200);
