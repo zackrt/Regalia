@@ -9,9 +9,9 @@ const mongoose = require('mongoose');
 // this module
 const should = chai.should();
 
-const { Users } = require('../models/users');
-const { closeServer, runServer, app } = require('../app');
-const { TEST_DATABASE_URL } = require('../config');
+const { Users } = require('./models/users');
+const { closeServer, runServer, app } = require('./app');
+const { TEST_DATABASE_URL } = require('./config');
 
 chai.use(chaiHttp);
 
@@ -40,7 +40,7 @@ function seedUserData() {
   for (let i = 1; i <= 10; i++) {
     seedData.push({
       Users: {
-        EmailAddress: faker.EmailAddress(),
+        EmailAddress: faker.internet.EmailAddress(),
         FirstName: faker.name.FirstName(),
         LastName: faker.name.LastName(),
         RentPayment: faker.number.RentPayment(),
@@ -78,7 +78,7 @@ describe('regalia posts API resource', function () {
   // on proving something small
   describe('GET endpoint', function () {
 
-    it('should return all existing user', function () {
+    it('should return all existing users', function () {
       // strategy:
       //    1. get back all posts returned by by GET request to `/posts`
       //    2. prove res has right status, data type
@@ -86,7 +86,7 @@ describe('regalia posts API resource', function () {
       //       in db.
       let res;
       return chai.request(app)
-        .get('/users')
+        .get('./routes/users')
         .then(_res => {
           res = _res;
           res.should.have.status(200);
