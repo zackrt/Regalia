@@ -2,41 +2,53 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 var path = require('path');
 
 var logger = require('morgan');
 
-var routes = require('./routes/index');
+
 var users = require('./routes/users');
-var blockchain = require('./routes/blockchain');
-// Mongoose internally uses a promise-like object,
-// but its better to make Mongoose use built in es6 promises
+var logged_in = require('./routes/logged_in');
+var seeUsers = require('./routes/see_users');
+var regaliaTotal = require('./routes/regalia');
+
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+
+
 mongoose.Promise = global.Promise;
-// config.js is where we control constants for entire
-// app like PORT and DATABASE_URL
+
 const { PORT, DATABASE_URL } = require('./config');
-//const { User } = require('./models/users');
+
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
-// view engine setup .use means it applies to all end points
+
 
 app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+
+passport.use(localStrategy);
+passport.use(jwtStrategy);
+
+app.use('/api/auth/', authRouter);
 app.use('/users', users);
-app.use('/blockchain', blockchain);
-// catch-all endpoint if client makes request to non-existent endpoint
+app.use('/logged_in', logged_in);
+app.use('/see_users', seeUsers);
+app.use('/regalia', regaliaTotal);
+
+
 app.use('*', function (req, res) {
   res.status(404).json({ message: 'Not Found' });
 });
-// closeServer needs access to a server object, but that only
-// gets created when `runServer` runs, so we declare `server` here
-// and then assign a value to it in run
+
+
+
+
+
 let server;
-// this function connects to our database, then starts the server
 function runServer(databaseUrl, port = PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, err => {

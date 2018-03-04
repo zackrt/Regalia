@@ -13,3 +13,21 @@ a {
 	width:70%;
 	margin:20px auto;
 }
+h4 {
+  font-size: 2em;
+}
+.login-form-response {
+	display: none;
+	margin:20px auto;
+}
+.aptphoto {
+	width: 100%;
+}
+.total-regalia {
+	font-size: 1.2em;
+	color: forestgreen;
+}
+.delete-alert-danger2 {
+	display : none;
+	color: red;
+}

@@ -1,5 +1,10 @@
 to do
+2/11/18
+1)
+see if you can plug that into the login function from the jwt exercise
+2. clean up user.js, clean up app.js
 
+2/10/18
 1) finish the serialize function so that you are sending all of the data you need (added UserName & EmailAddress)
 
 2) iterate through the object on the frontend (somewhere inside homescreen.js) so that the serialized data is displayed
@@ -146,3 +151,48 @@ router.get('/', (req, res) => {
 });
 
 module.exports = {router};
+
+to add: styles to style.css
+change image in sample image
+change dropdown to link
+
+2/18/18
+to do:
+ dealing with Blockchain logic inside blockchain.js
+for line 77 $.val() $(‘.name_of_input_class’).val()
+
+also the logged in zone with have all the crud calls
+
+
+what do I want to have happen in the user page:
+logic for logged-in page
+
+we have all the data,
+
+and we have jQuery
+
+and bootstrap for css
+
+how it should look and functional?
+
+
+
+work on the modals: User Interface-
+    1.Send Regalia with alert
+
+    2.Delete account,  Are you sure you want to delete (and lose your crypto)?
+
+1. data is an array objects, as we loop through it.
+
+2. using a .find in mongoose,  program the front-end & back-end 
+add a button handler in see-users front end
+a click handler. 
+to add all regalia to homescreen, landing page.
+
+1) on your client side js make an ajax call to the route for that data
+
+2) on your server side receive that ajax call and ping the database and get all of the rent payments
+3) add all of those payments together, then send them back to client side
+
+1.) write out a get url parameters script
+2.) 

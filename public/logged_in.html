@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+         <title>Regalia</title>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	    <!-- Latest compiled and minified CSS -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	    <!-- Optional theme -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	    <!-- Latest compiled and minified JavaScript -->
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	    <link rel='stylesheet' href='/stylesheets/style.css' />
+         <link rel="stylesheet" href="/stylesheets/logged_in.css">
+	    </head>
+	    <body>
+             <!-- bootstrap nav code -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Regalia</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://github.com/zackrt/Regalia">Fork Me on Github</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="https://github.com/zackrt/Regalia">Legal</a></li>
+                            <li role="separator" class="divider"></li>
+                            
+                            <li><a href='/index.html'>Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+        <div class="update-account-msg">
+          <span>
+            
+          </span>
+        </div>
+        <div class="no-problem panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Welcome Back,&nbsp;
+                    <span class="Email-Address"></span>!
+                </h3>
+            </div>
+            <div class="greeting panel-body">
+                <span class="Rent-Payment"></span>&nbsp;
+                <i class="glyphicon glyphicon-king"></i>
+                <div class="Regalia-coin">Regalia</div>
+            </div>
+        </div>
+        <div class="alert delete-alert-danger" role="alert"></div>
+        
+        <section class="btn-section">
+             <!-- Button trigger modal -->
+            <button class="btn btn-default btn-warning" data-toggle="modal" href="#Updateuseraccount"><i class="btn-glyphicon glyphicon glyphicon-user"></i>&nbsp;Update Account</button>
+  <!-- Modal -->
+  <div class="modal fade" id="Updateuseraccount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Update Account</h4>
+        </div>
+        <div class="modal-body">
+                <form class="form-horizontal">
+                        <div class="form-group">
+                          <label for="inputEmail3" class="col-sm-2 control-label">Email Address</label>
+                          <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder=""required readonly>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                          <div class="col-sm-10">
+                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password"required readonly>
+                          </div>
+                        </div>
+                          <div class="form-group">
+                                <label for="inputFirstName3" class="col-sm-2 control-label">First Name</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="inputFirstName3" placeholder=""required>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="inputLastName3" class="col-sm-2 control-label">Last Name</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="inputLastName3" placeholder=""required>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="inputRentPayment3" class="col-sm-2 control-label">Rent Payment</label>
+                                <div class="col-sm-10">
+                                  <input type="number" class="form-control" id="inputRentPayment3" placeholder=""required>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="modal-btn btn btn-success update-account"><i class="glyphicon glyphicon-ok"></i>&nbsp;Update</button>
+                            <button type="button" class="modal-btn btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-ban-circle"></i>&nbsp;Cancel</button>
+                          </div>
+                        </div>
+                      </form>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+            <button class="btn btn-default btn-info" id="seeusers"><i class="btn-glyphicon glyphicon glyphicon-list"></i>&nbsp;See Users</button>
+            <button class="btn btn-default btn-success"data-toggle="modal" href="#send-regalia"><i class="btn-glyphicon glyphicon glyphicon-transfer"></i>&nbsp;Send Regalia</button>
+            <div class="modal fade" id="send-regalia" tabindex="-1" role="dialog" aria-labelledby="send-regalia" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Send <i class="glyphicon glyphicon-king modal-glyphicon"></i>&nbsp;Regalia Feature Coming Soon!</h4>
+                    </div>
+                    <div class="modal-body">
+                            <form class="form-horizontal">
+                                    <div class="form-group">
+                                      <label for="inputEmail4" class="col-sm-2 control-label">Receiving Email Address/User</label>
+                                      <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Friend@Regalia.com" required readonly>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="inputRegaliaSendAmount" class="col-sm-2 control-label">Amount to Send</label>
+                                            <div class="col-sm-10">
+                                              <input type="number" class="form-control" id="inputRegaliaSendAmount" placeholder=""required readonly>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="modal-btn btn btn-success"><i class="btn-glyphicon glyphicon glyphicon-transfer"></i>&nbsp;Send Now!</button>
+                                        <button type="button" class="modal-btn btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-ban-circle"></i>&nbsp;Cancel</button>
+                                      </div>
+                                    </div>
+                                  </form>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+            <button class="btn btn-default btn-danger" data-toggle="modal" href="#deleteaccount"><i class="btn-glyphicon glyphicon glyphicon-remove-sign"></i>&nbsp;Delete Account</button>
+            <div class="modal fade" id="deleteaccount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title">Delete Account</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p><i class="glyphicon glyphicon-alert modal-glyphicon"></i>&nbsp;Are you sure? You will lose all of your Regalia!</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="modal-btn btn btn-danger" id="permanent-delete-account"><i class="btn-glyphicon glyphicon glyphicon-remove-sign"></i>&nbsp;Delete Account</button>
+                          <button type="button" class="modal-btn btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-ban-circle"></i>&nbsp;Cancel</button>
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+        </section>
+        <form class="update-account">
+            <div></div>
+        </form>         
+        <div class="alert alert-danger problem" role="alert">You are not logged in! Click <a href="/">here</a> to return to home page.</div>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+
+        <script src="/javascripts/logged_in.js"></script>
+    </body>
+</html>

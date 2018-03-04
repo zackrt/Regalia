@@ -2,32 +2,22 @@ var express = require('express');
 var router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+const passport = require('passport');
 const { User } = require('../models/users');
+
 
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
-// router.post('/', function(req, res) {
-//   console.log('users post', req.body)
-//   User.create({
-//     EmailAddress:req.body.EmailAddress,
-//     UserName:req.body.UserName,
-//     password:req.body.password,
-//     FirstName:req.body.FirstName,
-//     LastName:req.body.LastName,
-//     RentPayment:req.body.RentPayment
-      
-//   }).then(user => { 
-//     console.log("registered");
-//     res.status(201).send(user.serialize());})
-//   .catch(err => {
-//      console.error("err"); 
-//      res.status(500).json({message: 'Internal server error'}); });
-// });
+
+
+
+
+
 router.post('/', jsonParser, (req, res) => {
-  const requiredFields = ['UserName', 'password', 'FirstName', 'LastName', 'EmailAddress' ];
+  const requiredFields = [ 'password', 'FirstName', 'LastName', 'EmailAddress' ];
   const missingField = requiredFields.find(field => !(field in req.body));
 
   if (missingField) {
@@ -40,7 +30,7 @@ router.post('/', jsonParser, (req, res) => {
     });
   }
 //check to see if datatypes are correct
-  const stringFields = ['UserName', 'password', 'FirstName', 'LastName', 'EmailAddress'];
+  const stringFields = [ 'password', 'FirstName', 'LastName', 'EmailAddress'];
   const nonStringField = stringFields.find(
     field => field in req.body && typeof req.body[field] !== 'string'
   );
@@ -55,28 +45,7 @@ router.post('/', jsonParser, (req, res) => {
     });
   }
 
-  // const numberField = ['RentPayment'];
-  // const nonNumberField = numberField.find(
-  //   field => field in req.body && typeof req.body[field] !== 'number'
-  // );
-
-  // if (nonNumberField) {
-  //   console.log('missing Number field')
-  //   return res.status(422).json({
-  //     code: 422,
-  //     reason: 'ValidationError',
-  //     message: 'Incorrect field type: expected number',
-  //     location: nonNumberField
-  //   });
-  // }
-  // If the username and password aren't trimmed we give an error.  Users might
-  // expect that these will work without trimming (i.e. they want the password
-  // "foobar ", including the space at the end).  We need to reject such values
-  // explicitly so the users know what's happening, rather than silently
-  // trimming them and expecting the user to understand.
-  // We'll silently trim the other fields, because they aren't credentials used
-  // to log in, so it's less of a problem.
-  const explicityTrimmedFields = ['UserName', 'password'];
+  const explicityTrimmedFields = ['password'];
   const nonTrimmedField = explicityTrimmedFields.find(
     field => req.body[field].trim() !== req.body[field]
   );
@@ -89,11 +58,8 @@ router.post('/', jsonParser, (req, res) => {
       location: nonTrimmedField
     });
   }
-
+//ASK TED abt removing username:
   const sizedFields = {
-    UserName: {
-      min: 1
-    },
     password: {
       min: 6,
       // bcrypt truncates after 20 characters, so let's not give the illusion
@@ -126,26 +92,24 @@ router.post('/', jsonParser, (req, res) => {
     });
   }
 
-  let {UserName, password, FirstName = '', LastName = '', EmailAddress , RentPayment} = req.body;
+  let {password, FirstName = '', LastName = '', EmailAddress , RentPayment} = req.body;
   // Username and password come in pre-trimmed, otherwise we throw an error
   // before this
   FirstName = FirstName.trim();
   LastName = LastName.trim();
   EmailAddress = EmailAddress.trim();
-  UserName = UserName.trim();
   password = password.trim();
 
-
-  return User.find({UserName})
+  return User.find({EmailAddress})
     .count()
     .then(count => {
-      if (count > 0) {
+      if (count > 100) {
         // There is an existing user with the same username
         return Promise.reject({
           code: 422,
           reason: 'ValidationError',
-          message: 'Username already taken',
-          location: 'username'
+          message: 'Email Address already taken',
+          location: 'EmailAddress'
         });
       }
       // If there is no existing user, hash the password
@@ -153,12 +117,11 @@ router.post('/', jsonParser, (req, res) => {
     })
     .then(hash => {
       return User.create({
-        UserName,
+        EmailAddress,
         password: hash,
         FirstName,
         LastName,
-        EmailAddress,
-        RentPayment: Number
+        RentPayment
       });
     })
     .then(user => {
@@ -167,12 +130,15 @@ router.post('/', jsonParser, (req, res) => {
     .catch(err => {
       // Forward validation errors on to the client, otherwise give a 500
       // error because something unexpected has happened
+      console.log('here2', err)
       if (err.reason === 'ValidationError') {
         return res.status(err.code).json(err);
       }
       res.status(500).json({code: 500, message: 'Internal server error'});
     });
 });
+
+
 
 
 module.exports = router;
