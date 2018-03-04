@@ -76,7 +76,6 @@ describe('regalia posts API resource', function () {
   // this allows us to make clearer, more discrete tests that focus
   // on proving something small
   describe('GET endpoint', function () {
-
     it('should return all existing users', function () {
       // strategy:
       //    1. get back all posts returned by by GET request to `/posts`
@@ -85,19 +84,16 @@ describe('regalia posts API resource', function () {
       //       in db.
       let res;
       return chai.request(app)
-        .get('./routes/users')
+        .get('/users/for_tests')
         .then(_res => {
           res = _res;
-          res.should.have.status(200);
+          expect(res).to.should.have.status(200);
           // otherwise our db seeding didn't work
-          res.body.should.have.length.of.at.least(1);
-
+          expect(res.body.should.allusers).to.have.length.of.at.least(1);
           return Users.count();
         })
         .then(count => {
-          // the number of returned posts should be same
-          // as number of posts in DB
-          res.body.should.have.length.of(count);
+          expect(res.body.allusers).to.have.length(count);
         });
     });
 
