@@ -11,7 +11,7 @@ $(function(){
 	let EmailAddress = $_GET['EmailAddress']
 	$('.back-to-user-page').attr('href',`/logged_in.html?token=${token}&EmailAddress=${EmailAddress}`)
     $.ajax({
-	    url: `/see_users`,
+	    url: `/users`,
 	    type: 'GET',
 	    headers: { 'authorization': `Bearer ${token}`},
 	    success:function(data){

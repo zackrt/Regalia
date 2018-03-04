@@ -5,16 +5,17 @@ const jsonParser = bodyParser.json();
 const passport = require('passport');
 const { User } = require('../models/users');
 
+const jwtAuth = passport.authenticate('jwt', { session: false });
 
-
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', jwtAuth,(req, res) => {
+  try {
+    User.find({}).then(allusers => {
+      res.json({allusers})
+    })
+  } catch(err) {
+    res.json({err})
+  }
 });
-
-
-
-
 
 router.post('/', jsonParser, (req, res) => {
   const requiredFields = [ 'password', 'FirstName', 'LastName', 'EmailAddress' ];
@@ -103,7 +104,7 @@ router.post('/', jsonParser, (req, res) => {
   return User.find({EmailAddress})
     .count()
     .then(count => {
-      if (count > 100) {
+      if (count > 0) {
         // There is an existing user with the same username
         return Promise.reject({
           code: 422,

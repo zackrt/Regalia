@@ -85,7 +85,7 @@ describe('regalia posts API resource', function () {
       //       in db.
       let res;
       return chai.request(app)
-        .get('./routes/see_users')
+        .get('./routes/users')
         .then(_res => {
           res = _res;
           res.should.have.status(200);

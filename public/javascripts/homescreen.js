@@ -1,15 +1,19 @@
 $(function(){
 
-	var $_GET = {};
-	document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
-	 	function decode(s) {
-	 		return decodeURIComponent(s.split("+").join(" "));
-	 	}
-	 	$_GET[decode(arguments[1])] = decode(arguments[2]);
-	});
-			if($_GET['delete']){
-				$(".delete-alert-danger2").text("Your Account was Deleted!").css("display", "block")
-			}
+	function createURLObject(){
+		let string = window.location.search.substring(1);
+		let arr = string.split('&');
+		let returnObj = {};
+		for(let i = 0; i < arr.length; i++){
+		  let miniArr = arr[i].split("=")
+		  returnObj[miniArr[0]] = miniArr[1]
+		}
+		return returnObj;
+	  }
+	$_GET = createURLObject();
+		if($_GET['delete']){
+			$(".delete-alert-danger2").text("Your Account was Deleted!").css("display", "block")
+		}
 
 	$.ajax({
 		url: '/regalia/total', 
@@ -76,7 +80,19 @@ $(function(){
 		})
 		$('#register-form').submit(function(e){
 			e.preventDefault();
-			let obj = {password:'exampleDelete', EmailAddress: 'test1@delete.com', FirstName:'Jim', LastName:'Smith', RentPayment:1200};
+			let password = $('#exampleInputPassword1').val() ||'exampleDelete'; 
+			let EmailAddress = $('#exampleInputEmail1').val() || 'test1@development.com';
+			let FirstName = $('#exampleInputFirstName').val() || 'Jake';
+			let LastName = $('#exampleInputLastName').val() || 'Smith';
+			let RentPayment = $('#exampleInputRentPayment').val() || 1200;
+
+			let obj = {
+			password,
+			EmailAddress, 
+			FirstName, 
+			LastName, 
+			RentPayment
+		};
 			$.ajax({
             	url: '/users', 
 	            type: 'POST', 
@@ -90,7 +106,14 @@ $(function(){
 		})
 		$('#login-form').submit(function(e){
 			e.preventDefault();
-			let obj = {EmailAddress: 'test1@delete.com',password:'exampleDelete'};
+			let EmailAddress = $('#loginEmail').val() || 'test1@development.com';
+			let password = $('#loginPassword').val() ||'exampleDelete';
+
+
+			let obj = {
+			EmailAddress,
+			password
+			};
 			$.ajax({
             	url: '/api/auth/login', 
 	            type: 'POST', 
