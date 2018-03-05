@@ -25,8 +25,7 @@ $(function(){
 			$(".Email-Address").text(EmailAddress);
 			$(".Rent-Payment").text(numberWithCommas(data.user.RentPayment));
 			$("#inputEmail3").val(EmailAddress);
-			+
-+			//fill in update form
+			//fill in update form
 			$("#inputFirstName3").val(data.user.FirstName);
 			$("#inputLastName3").val(data.user.LastName);
 			$("#inputRentPayment3").val(data.user.RentPayment);

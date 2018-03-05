@@ -20,7 +20,7 @@ router.get('/', jwtAuth,(req, res) => {
 
 });
 //delete user account
-router.delete('/', jwtAuth, (req, res) => {
+router.delete('/for_tests', jwtAuth, (req, res) => {
     console.log(req);
     try {
         User.deleteOne({EmailAddress: req.body.EmailAddress}).then(users => {
@@ -32,6 +32,20 @@ router.delete('/', jwtAuth, (req, res) => {
 });
 //update account 
 router.put('/', jwtAuth,(req, res) =>{
+    try {
+        User.findOneAndUpdate(
+          {EmailAddress: req.body.EmailAddress},
+          req.body,
+          {new: true},
+          (err, newUser) => {
+            if (err) return res.status(500).send(err);
+            res.send(newUser);
+          })
+    } catch (e) {
+        res.status(500).json({ message: 'Internal server error, account cannot be updated' });
+    }
+});
+router.put('/for_tests', (req, res) =>{
     try {
         User.findOneAndUpdate(
           {EmailAddress: req.body.EmailAddress},
