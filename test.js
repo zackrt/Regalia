@@ -146,7 +146,8 @@ describe('regalia posts API resource', function () {
           expect(newUser.FirstName).to.equal(newUser.FirstName);
           expect(newUser.LastName).to.equal(newUser.LastName);
           expect(newUser.RentPayment).to.equal(newUser.RentPayment)
-        });
+        })
+        .done();
     });
   })
   describe('regalia API resource', function createNewUser() {
@@ -215,12 +216,27 @@ describe('regalia posts API resource', function () {
       it('should return user data with right fields updated', function updateUser() {
       // Strategy: It should update a users' account info
       //
-       let resPost;
+       let res;
+       let updateUser ={
+              EmailAddress: 'test@regalia.com',
+              FirstName: 'Tom',
+              LastName: 'Sawyer',
+              RentPayment: '1500'
+            };
+
        return chai.request(app)
-         .get('/logged_in')
+        .findOne()
+         .put('/logged_in/for_tests')
+         .send(updateUser)
          .then(function (res) {
-          
+          expect(res).to.have.status(200);
+          expect(res.body.id).to.equal(updateUser.id);
+          expect(res.body.EmailAddress).to.equal(updateUser.EmailAddress)
+          expect(res.body.RentPayment).to.equal(updateUser.RentPayment)
+          expect(res.body.FirstName).to.equal(updateUser.FirstName)
+          expect(res.body.LastName).to.equal(updateUser.LastName)
          })
+         
       })
     });
     describe('regalia API resource', function updateUser() {
@@ -230,7 +246,7 @@ describe('regalia posts API resource', function () {
       });
   
       beforeEach(function updateUser() {
-        return seedUserData();
+        return updateUser();
       });
   
       afterEach(function updateUser() {
