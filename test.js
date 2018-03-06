@@ -35,8 +35,6 @@ function tearDownDb() {
       .catch(err => reject(err));
   });
 }
-
-
 // used to put randomish documents in db
 // so we have data to work with and assert about.
 // we use the Faker library to automatically
@@ -77,7 +75,6 @@ describe('regalia posts API resource', function () {
   after(function () {
     return closeServer();
   });
-
   // note the use of nested `describe` blocks.
   // this allows us to make clearer, more discrete tests that focus
   // on proving something small
@@ -102,14 +99,11 @@ describe('regalia posts API resource', function () {
           expect(res.body.allusers).to.have.length(count);
         });
     });
-
   })
-});
-
 
   describe('POST endpoint', function createNewUser() {
 
-    it('should create a new user', function createNewUser() {
+    it('should create a new user', function () {
       // strategy:
       //    1. get back all posts returned by by GET request to `/posts`
       //    2. prove res has right status, data type
@@ -134,13 +128,13 @@ describe('regalia posts API resource', function () {
           expect(res.body).to.be.a('object');
           expect(res.body).to.include.keys(
             'id','FirstName','LastName','EmailAddress');
-          expect(res.body.EmailAddress).should.equal(newUser.EmailAddress);
+          expect(res.body.EmailAddress).to.equal(newUser.EmailAddress);
           // cause Mongo should have created 4`id on insertion
           expect(res.body.id).should.not.be.null;
           expect(res.body.RentPayment).to.equal(newUser.RentPayment);
           return User.findById(res.body.id);
         })
-        .then(function (newUser) {
+        .then(function createNewUser (newUser) {
           console.log("NEW USER + ", newUser);
           expect(newUser.EmailAddress).to.equal(newUser.EmailAddress);
           expect(newUser.FirstName).to.equal(newUser.FirstName);
@@ -150,26 +144,6 @@ describe('regalia posts API resource', function () {
         .done();
     });
   })
-  describe('regalia API resource', function createNewUser() {
-
-    before(function createNewUser() {
-      return runServer(TEST_DATABASE_URL);
-    });
-
-    beforeEach(function createNewUser() {
-      return newUser();
-    });
-
-    afterEach(function createNewUser() {
-      // tear down database so we ensure no state from this test
-      // effects any coming after.
-      return tearDownDb();
-    });
-
-    after(function createNewUser() {
-      return closeServer();
-    });
-  });
   describe('DELETE endpoint', function deleteUser() {
      // strategy:
      //  1. get a user
@@ -191,27 +165,8 @@ describe('regalia posts API resource', function () {
         .then(User => {
           expect(user).to.not.exist;
         })
+      })
   })
-  describe('regalia API resource', function deleteUser() {
-
-    before(function deleteUser() {
-      return runServer(TEST_DATABASE_URL);
-    });
-
-    beforeEach(function deleteUser() {
-      return seedUserData();
-    });
-
-    afterEach(function deleteUser() {
-      // tear down database so we ensure no state from this test
-      // effects any coming after.
-      return tearDownDb();
-    });
-
-    after(function deleteUser() {
-      return closeServer();
-    });
-  });
     describe('PUT endpoint', function updateUser() {
       it('should return user data with right fields updated', function updateUser() {
       // Strategy: It should update a users' account info
@@ -224,7 +179,6 @@ describe('regalia posts API resource', function () {
               LastName: 'Sawyer',
               RentPayment: '1500'
             };
-
        return chai.request(app)
         .findOne()
          .put('/logged_in/for_tests')
@@ -238,25 +192,5 @@ describe('regalia posts API resource', function () {
           expect(res.body.LastName).to.equal(updateUser.LastName)
          })
       })
-    });
-    describe('regalia API resource', function updateUser() {
-
-      before(function updateUser() {
-        return runServer(TEST_DATABASE_URL);
-      });
-  
-      beforeEach(function updateUser() {
-        return updateUser();
-      });
-  
-      afterEach(function updateUser() {
-        // tear down database so we ensure no state from this test
-        // effects any coming after.
-        return tearDownDb();
-      });
-  
-      after(function updateUser() {
-        return closeServer();
-      });
-    });
+    })
   });
