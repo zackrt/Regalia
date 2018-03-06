@@ -141,7 +141,7 @@ describe('regalia posts API resource', function () {
           expect(newUser.LastName).to.equal(newUser.LastName);
           expect(newUser.RentPayment).to.equal(newUser.RentPayment)
         })
-        .done();
+        
     });
   })
   describe('DELETE endpoint', function deleteUser() {
