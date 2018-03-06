@@ -150,13 +150,14 @@ describe('regalia posts API resource', function () {
      //  2. make a DELETE request for that user's email address
      //  3. assert that response has right status code 200
      //  4. prove that post with the id doesn't exist in db anymore
-    it('should delete a user', function deleteUser() {
+    it('should delete a user', function () {
       let res;
+    
       return User
         .findOne()
         .then(_res => {
           res = _res;
-          return chai.request(app).delete(`/logged_in/${EmailAddress}`);
+          return chai.request(app).delete(`/logged_in/for_tests`);
         })
         .then(res => {
           expect(res).to.have.status(200);
@@ -168,7 +169,7 @@ describe('regalia posts API resource', function () {
       })
   })
     describe('PUT endpoint', function updateUser() {
-      it('should return user data with right fields updated', function updateUser() {
+      it('should return user data with right fields updated', function () {
       // Strategy: It should update a users' account info
       //
        let res;
