@@ -23,6 +23,10 @@ chai.use(chaiHttp);
 // we'll call it in an `afterEach` block below
 // to ensure  data from one test does not stick
 // around for next one
+// this function deletes the entire database.
+// we'll call it in an `afterEach` block below
+// to ensure  ata from one test does not stick
+// around for next one
 function tearDownDb() {
   return new Promise((resolve, reject) => {
     console.warn('Deleting database');
@@ -31,46 +35,49 @@ function tearDownDb() {
       .catch(err => reject(err));
   });
 }
+
+
 // used to put randomish documents in db
 // so we have data to work with and assert about.
 // we use the Faker library to automatically
 // generate placeholder values for Email Address, Password, first name, last name
 // and then we insert that data into mongo
 function seedUserData() {
+  console.info('seeding regalia users data');
   const seedData = [];
   for (let i = 1; i <= 10; i++) {
     seedData.push({
-        password: 'asdfjkl',
+        EmailAddress: `${faker.name.firstName()}@asdf.com`,
         FirstName: faker.name.firstName(),
         LastName: faker.name.lastName(),
-        EmailAddress: `${faker.name.firstName()}@asdf.com`,
-        RentPayment: '1200',
+        RentPayment: '1222',
+        password: 'asdf'
     });
   }
   // this will return a promise
   return User.insertMany(seedData);
 }
 
-  describe('regalia API resource', function () {
+describe('regalia posts API resource', function () {
 
-    before(function () {
-      return runServer(TEST_DATABASE_URL);
-    });
-
-    beforeEach(function () {
-      return seedUserData();
-    });
-
-    afterEach(function () {
-      // tear down database so we ensure no state from this test
-      // effects any coming after.
-      return tearDownDb();
-    });
-
-    after(function () {
-      return closeServer();
-    });
+  before(function () {
+    return runServer(TEST_DATABASE_URL);
   });
+
+  beforeEach(function () {
+    return seedUserData();
+  });
+
+  afterEach(function () {
+    // tear down database so we ensure no state from this test
+    // effects any coming after.
+    return tearDownDb();
+  });
+
+  after(function () {
+    return closeServer();
+  });
+
   // note the use of nested `describe` blocks.
   // this allows us to make clearer, more discrete tests that focus
   // on proving something small
@@ -94,13 +101,15 @@ function seedUserData() {
         .then(count => {
           expect(res.body.allusers).to.have.length(count);
         });
-    })
-  });
+    });
+
+  })
+});
 
 
   describe('POST endpoint', function createNewUser() {
 
-    it('should create a new user', function () {
+    it('should create a new user', function createNewUser() {
       // strategy:
       //    1. get back all posts returned by by GET request to `/posts`
       //    2. prove res has right status, data type
@@ -140,7 +149,7 @@ function seedUserData() {
         });
     });
   })
-  describe('regalia API resource', function () {
+  describe('regalia API resource', function createNewUser() {
 
     before(function createNewUser() {
       return runServer(TEST_DATABASE_URL);
@@ -166,7 +175,7 @@ function seedUserData() {
      //  2. make a DELETE request for that user's email address
      //  3. assert that response has right status code 200
      //  4. prove that post with the id doesn't exist in db anymore
-    it('should delete a user', function () {
+    it('should delete a user', function deleteUser() {
       let res;
       return User
         .findOne()
@@ -182,7 +191,7 @@ function seedUserData() {
           expect(user).to.not.exist;
         })
   })
-  describe('regalia API resource', function () {
+  describe('regalia API resource', function deleteUser() {
 
     before(function deleteUser() {
       return runServer(TEST_DATABASE_URL);
@@ -203,7 +212,7 @@ function seedUserData() {
     });
   });
     describe('PUT endpoint', function updateUser() {
-      it('should return user data with right fields updated', function () {
+      it('should return user data with right fields updated', function updateUser() {
       // Strategy: It should update a users' account info
       //
        let resPost;
@@ -214,7 +223,7 @@ function seedUserData() {
          })
       })
     });
-    describe('regalia API resource', function () {
+    describe('regalia API resource', function updateUser() {
 
       before(function updateUser() {
         return runServer(TEST_DATABASE_URL);
