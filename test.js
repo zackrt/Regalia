@@ -217,6 +217,7 @@ describe('regalia posts API resource', function () {
       // Strategy: It should update a users' account info
       //
        let res;
+       let User = User;
        let updateUser ={
               EmailAddress: 'test@regalia.com',
               FirstName: 'Tom',
@@ -236,7 +237,6 @@ describe('regalia posts API resource', function () {
           expect(res.body.FirstName).to.equal(updateUser.FirstName)
           expect(res.body.LastName).to.equal(updateUser.LastName)
          })
-         
       })
     });
     describe('regalia API resource', function updateUser() {
