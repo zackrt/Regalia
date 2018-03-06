@@ -105,10 +105,9 @@ describe('regalia posts API resource', function () {
 
     it('should create a new user', function () {
       // strategy:
-      //    1. get back all posts returned by by GET request to `/posts`
-      //    2. prove res has right status, data type
-      //    3. prove the number of posts we got back is equal to number
-      //       in db.
+      //    1. get back all posts returned by by GET request to `/users`
+      //    2. prove res has right status 201, data type
+      //    3. prove the new user was created
       let res;
       let newUser = {
         password: 'asdfjkl',
@@ -122,7 +121,6 @@ describe('regalia posts API resource', function () {
         .send(newUser)
         .then(_res => {
           res = _res;
-
           expect(res).to.have.status(201);
           expect(res.body).to.be.json;
           expect(res.body).to.be.a('object');
@@ -134,12 +132,12 @@ describe('regalia posts API resource', function () {
           expect(res.body.RentPayment).to.equal(newUser.RentPayment);
           return User.findById(res.body.id);
         })
-        .then(function createNewUser (newUser) {
+        .then(newUser => {
           console.log("NEW USER + ", newUser);
-          expect(newUser.EmailAddress).to.equal(newUser.EmailAddress);
-          expect(newUser.FirstName).to.equal(newUser.FirstName);
-          expect(newUser.LastName).to.equal(newUser.LastName);
-          expect(newUser.RentPayment).to.equal(newUser.RentPayment)
+          expect(res.newUser.EmailAddress).to.equal(newUser.EmailAddress);
+          expect(res.newUser.FirstName).to.equal(newUser.FirstName);
+          expect(res.newUser.LastName).to.equal(newUser.LastName);
+          expect(res.newUser.RentPayment).to.equal(newUser.RentPayment)
         })
         
     });
@@ -151,11 +149,12 @@ describe('regalia posts API resource', function () {
      //  3. assert that response has right status code 200
      //  4. prove that post with the id doesn't exist in db anymore
     it('should delete a user', function () {
-      let res;
+      let res = _res;
     
       return User
         .findOne()
         .then(_res => {
+          console.log(_res , User);
           res = _res;
           return chai.request(app).delete(`/logged_in/for_tests`);
         })
