@@ -58,7 +58,13 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
                 <h4>Pay Your Rent. Collect Regalia cryptocurrency.</h4>
-                <h5>Coming Spring 2018</h5>
+                <section class="display-total-regalia">
+                        <h5>There is currently
+                        <span class="total-regalia"></span>
+                        Regalia on the blockchain
+                        </h5>
+                        
+                </section>
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" ><a href="#register" aria-controls="register" role="tab" data-toggle="tab">Register</a></li>
                     <li role="presentation" class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">Login</a></li>
@@ -68,24 +74,24 @@
                     <h4>Register</h4>
                     <form id="register-form">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address: this will be your username</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="joe@smith.com" required>
+                            <label for="exampleInputEmail1">Email address: <span class="input-instruct-gray">this will be your username</span></label>
+                            <input type="email" class="form-control email-address-input" id="exampleInputEmail1" placeholder="joe@smith.com" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                            <input type="password" class="form-control password-input" id="exampleInputPassword1" placeholder="Password" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFirstName">First name</label>
-                            <input type="text" class="form-control" id="exampleInputFirstName" placeholder="i.e. Joe" required>
+                            <input type="text" class="form-control firstname-input" id="exampleInputFirstName" placeholder="i.e. Joe" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputLastName">Last Name</label>
-                            <input type="text" class="form-control" id="exampleInputLastName" placeholder="i.e. Smith" required>
+                            <input type="text" class="form-control lastname-input" id="exampleInputLastName" placeholder="i.e. Smith" required>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputRent">Rent Payment: input whole numbers only, no commas or dollar signs</label>
-                            <input type="number" class="form-control" id="exampleInputRentPayment" placeholder="1400">
+                            <label for="exampleInputRent">Rent Payment: <span class="input-instruct-gray">Input whole numbers only, no commas or dollar signs</span></label>
+                            <input type="number" class="form-control rentpayment-input" id="exampleInputRentPayment" placeholder="1400" min="1" max="3500" step="1" required>
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                         <div class="registration-results"></div>
@@ -96,21 +102,34 @@
                     <form id="login-form" action="#">
                         <div class="form-group">
                             <label for="loginEmail">Email address/ Username</label>
-                            <input type="email" class="form-control" id="loginEmail" placeholder="Email Address">
+                            <input type="email" class="form-control email-address-input" id="loginEmail" placeholder="Email Address">
                         </div>
                         <div class="form-group">
                             <label for="loginPassword">Password</label>
-                            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                            <input type="password" class="form-control password-input" id="loginPassword" placeholder="Password">
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
                     <div class="alert alert-info login-form-response" role="alert">cxcvbxcvbxc</div>
                 </div>
-                <section class="display-total-regalia">
-                        <h5>There is currently
-                        <span class="total-regalia"></span>
-                        Regalia on the blockchain
-                        </h5>
+                <section class="instructions">
+                    <ul>
+                        <p class= "steps-list">
+                            <li>
+                            Step 1: Register! Create new account with an email, secure password (hashed), full name and your monthly rent payment
+                            </li>
+                            <li>
+                            Step 2: Click Login Tab! Use your email as your username, and type your password, and submit.
+                            </li>
+                            <li>
+                            Step 3: Collect Regalia! Once you log in, you will receive your free Regalia cryptocurrency, you can hold or send another user your Regalia (coming soon)
+                            </li>
+                            <li>
+                            Step 4: Update your personal account information (each month).
+                            </li>
+                        </p>
+                    </ul>
+
                 </section>
                <!-- html5 code block to embed instruction video 
                    <section class="video">

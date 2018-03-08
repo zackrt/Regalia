@@ -23,6 +23,9 @@ h4 {
 .aptphoto {
 	width: 100%;
 }
+.display-total-regalia {
+	padding-top: 5px;
+}
 .total-regalia {
 	font-size: 1.2em;
 	color: forestgreen;
@@ -30,4 +33,20 @@ h4 {
 .delete-alert-danger2 {
 	display : none;
 	color: red;
+}
+.email-address-input, .password-input, .firstname-input, .lastname-input {
+	width: 50%;
+}
+.rentpayment-input {
+	width: 20%;
+}
+.input-instruct-gray {
+	color: darkgray;
+}
+.instructions {
+	font-size: 1.2em;
+	padding: 10px;
+}
+.steps-list {
+	margin-bottom: 100px;
 }
