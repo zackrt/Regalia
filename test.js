@@ -103,7 +103,7 @@ describe('regalia posts API resource', function () {
 
   describe('POST endpoint', function createNewUser() {
 
-    it.skip('should create a new user', function () {
+    it('should create a new user', function () {
       // strategy:
       //    1. get back all posts returned by by GET request to `/users`
       //    2. prove res has right status 201, data type
@@ -123,7 +123,7 @@ describe('regalia posts API resource', function () {
           res = _res;
           expect(res).to.have.status(201);
           console.log(res.body);
-          expect(res.body).to.be.json;
+          
           expect(res.body).to.be.an('object');
           expect(res.body).to.include.keys(
             'id','FirstName','LastName','EmailAddress', 'RentPayment');
@@ -135,66 +135,76 @@ describe('regalia posts API resource', function () {
           return User.findById(res.body.id);
         })
         .then(user => {
-          console.log("NEW USER + ", newUser);
-          expect(res.newUser.EmailAddress).to.equal(newUser.EmailAddress);
-          expect(res.newUser.FirstName).to.equal(newUser.FirstName);
-          expect(res.newUser.LastName).to.equal(newUser.LastName);
-          expect(res.newUser.RentPayment).to.equal(newUser.RentPayment)
-        })
-        .done()
-        
+  
+          expect(user.EmailAddress).to.equal(newUser.EmailAddress);
+          expect(user.FirstName).to.equal(newUser.FirstName);
+          expect(user.LastName).to.equal(newUser.LastName);
+          expect(user.RentPayment).to.equal(newUser.RentPayment);
+        })      
     });
   })
-  describe('DELETE endpoint', function deleteUser() {
-     // strategy:
-     //  1. get a user
-     //  2. make a DELETE request for that user's email address
-     //  3. assert that response has right status code 200
-     //  4. prove that post with the id doesn't exist in db anymore
-    it.skip('should delete a user', function () {
-      let res;
-    
-      return chai.request(app)
-        .findOne(User)
-        .then(_res => {
-          console.log(res , User);
-          res = _res;
-          return chai.request(app).delete(`/logged_in/for_tests`);
+  describe('DELETE endpoint', function() {
+    // strategy:
+    //  1. get a restaurant
+    //  2. make a DELETE request for that restaurant's id
+    //  3. assert that response has right status code
+    //  4. prove that restaurant with the id doesn't exist in db anymore
+    it('delete a regalia User by id', function() {
+
+      let user;
+
+      return User
+        .findOne()
+        .then(function(_user) {
+          user = _user;
+          return chai.request(app).delete(`/logged_in/for_tests/${user._id}`);
         })
-        .then(res => {
-          expect(res).to.have.status(200);
-          expect(res).to.be.be(json);
+        .then(function(res) {
+          expect(res).to.have.status(204);
+          return User.findById(user.id);
         })
-        .then(User => {
-          expect(User).to.not.exist;
-        })
-        .done()
-      })
-  })
-    describe('PUT endpoint', function updateUser() {
-      it.skip('should return user data with right fields updated', function () {
+        .then(function(user) {
+          expect(user).to.be.null;
+        });
+    });
+  });
+    describe('PUT endpoint', function () {
+      it('should return user data with right fields updated', function () {
       // Strategy: It should update a users' account info
       //
        let res;
-       let User;
-       let updateUser ={
-              EmailAddress: 'test@regalia.com',
-              FirstName: 'Tom',
-              LastName: 'Sawyer',
-              RentPayment: '1500'
-            };
-       return chai.request(app)
-        .findOne()
-         .put('/logged_in/for_tests')
-         .send(updateUser)
-         .then(function (res) {
-          expect(res).to.have.status(200);
-          expect(res.body.id).to.equal(updateUser.id);
-          expect(res.body.EmailAddress).to.equal(updateUser.EmailAddress)
-          expect(res.body.RentPayment).to.equal(updateUser.RentPayment)
-          expect(res.body.FirstName).to.equal(updateUser.FirstName)
-          expect(res.body.LastName).to.equal(updateUser.LastName)
-         })
-      })
-    })
+              // strategy:
+              //  1. Get an existing user from db
+              //  2. Make a PUT request to update that user
+              //  3. Prove updated user returned by request contains data we sent
+              //  4. Prove user in db is correctly updated
+                const updateUser = {
+                  EmailAddress: 'test@regalia.com',
+                  FirstName: 'Tom',
+                  LastName: 'Sawyer',
+                  RentPayment: '1500'
+                };
+                return User 
+                  .findOne()
+                  .then(function(randomUser) {
+                    updateUser.id = randomUser.id;
+                    console.log(updateUser.id, randomUser.id);
+                    // make request then inspect it to make sure it reflects
+                    // data we sent
+                    return chai.request(app)
+                      .put(`/logged_in/for_tests/${randomUser.id}`)
+                      .send(updateUser);
+                  })
+                  .then(function(res) {
+                    expect(res).to.have.status(204);
+                    return User.findById(updateUser.id);
+                  })
+                  .then(function(user) {
+                    expect(user.EmailAddress).to.equal(updateUser.EmailAddress);
+                    expect(user.FirstName).to.equal(updateUser.FirstName);
+                    expect(user.LastName).to.equal(updateUser.LastName);
+                    expect(user.RentPayment).to.equal(updateUser.RentPayment);
+                  })
+              })
+            })
   });
