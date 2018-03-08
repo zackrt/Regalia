@@ -44,7 +44,7 @@
 /* for desktop */
 @media (min-width:768px) {
 	.glyphicon {
-		font-size: 6em;
+		font-size: 5em;
 		display:block;
 	}
 	.btn-section {
@@ -54,9 +54,6 @@
 	}
 	.btn-glyphicon {
 		font-size: 1.2em;
-	}
-	.btn-default {
-		
 	}
 	.btn {
 		margin-left: 10px;
