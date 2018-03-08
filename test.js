@@ -182,7 +182,7 @@ describe('regalia posts API resource', function () {
                   EmailAddress: 'test@regalia.com',
                   FirstName: 'Tom',
                   LastName: 'Sawyer',
-                  RentPayment: '1500'
+                  RentPayment: 1500
                 };
                 return User 
                   .findOne()
