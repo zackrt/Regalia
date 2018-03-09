@@ -19,7 +19,7 @@ h4 {
 	display: none;
 	margin:20px auto;
 }
-.aptphoto {
+.aptphoto, .accountphoto {
 	width: 50%;
 }
 .display-total-regalia {
