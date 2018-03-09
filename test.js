@@ -123,7 +123,6 @@ describe('regalia posts API resource', function () {
           res = _res;
           expect(res).to.have.status(201);
           console.log(res.body);
-          
           expect(res.body).to.be.an('object');
           expect(res.body).to.include.keys(
             'id','FirstName','LastName','EmailAddress', 'RentPayment');
@@ -135,7 +134,6 @@ describe('regalia posts API resource', function () {
           return User.findById(res.body.id);
         })
         .then(user => {
-  
           expect(user.EmailAddress).to.equal(newUser.EmailAddress);
           expect(user.FirstName).to.equal(newUser.FirstName);
           expect(user.LastName).to.equal(newUser.LastName);

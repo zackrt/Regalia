@@ -24,13 +24,10 @@ router.get('/for_tests',(req, res) => {
   } catch(err) {
       res.json({err})
   }
-
 });
-
 router.post('/', jsonParser, (req, res) => {
   const requiredFields = [ 'password', 'FirstName', 'LastName', 'EmailAddress' ];
   const missingField = requiredFields.find(field => !(field in req.body));
-
   if (missingField) {
     console.log('missing entity field')
     return res.status(422).json({
@@ -40,13 +37,11 @@ router.post('/', jsonParser, (req, res) => {
       location: missingField
     });
   }
-
 //check to see if datatypes are correct
   const stringFields = [ 'password', 'FirstName', 'LastName', 'EmailAddress'];
   const nonStringField = stringFields.find(
     field => field in req.body && typeof req.body[field] !== 'string'
   );
-
   if (nonStringField) {
     console.log('missing nonstring entity field')
     return res.status(422).json({
@@ -56,12 +51,10 @@ router.post('/', jsonParser, (req, res) => {
       location: nonStringField
     });
   }
-
   const explicityTrimmedFields = ['password'];
   const nonTrimmedField = explicityTrimmedFields.find(
     field => req.body[field].trim() !== req.body[field]
   );
-
   if (nonTrimmedField) {
     return res.status(422).json({
       code: 422,
@@ -149,7 +142,4 @@ router.post('/', jsonParser, (req, res) => {
       res.status(500).json({code: 500, message: 'Internal server error'});
     });
 });
-
-
-
 module.exports = router;

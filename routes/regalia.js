@@ -2,11 +2,8 @@ var express = require('express');
 var router = express.Router();
 const { User } = require('../models/users');
 
-
 //Display all Regalia in existence
 router.get('/total', (req, res) => {
-
-   
    try {
         User.find({}).then(allusers => {
             res.json({total:allusers.reduce(function(total,user){
@@ -20,7 +17,6 @@ router.get('/total', (req, res) => {
    } catch(err) {
        res.json({err})
    }
-
 });
 
 module.exports = router;

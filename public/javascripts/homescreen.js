@@ -1,5 +1,4 @@
 $(function(){
-
 	function createURLObject(){
 		let string = window.location.search.substring(1);
 		let arr = string.split('&');
@@ -9,12 +8,11 @@ $(function(){
 		  returnObj[miniArr[0]] = miniArr[1]
 		}
 		return returnObj;
-	  }
+	}
 	$_GET = createURLObject();
 		if($_GET['delete']){
 			$(".delete-alert-danger2").text("Your Account was Deleted!").css("display", "block")
 		}
-
 	$.ajax({
 		url: '/regalia/total', 
 		type: 'GET',  
@@ -25,59 +23,6 @@ $(function(){
 		} 
 	});
 
-    $('body').on('click', '.testingPost', function(){
-    	let obj = {};
-        $.ajax({
-            	url: '/blockchain', 
-	            type: 'POST', 
-	            data: obj, 
-	            dataType: 'json',
-	            success: function(result) 
-	            { 
-	            	$(".alert-success").text(result.message) 
-	            } 
-        	});
-    	})
-
-    $('body').on('click', '.testingDelete', function(){
-    	let obj = {};
-        $.ajax({
-            	url: '/blockchain', 
-	            type: 'DELETE', 
-	            data: obj, 
-	            dataType: 'json',
-	            success: function(result) 
-	            { 
-	            	$(".alert-danger").text(result.message) 
-	            } 
-        	});
-    	})
-    $('body').on('click', '.testingGet', function(){
-    	let obj = {};
-        $.ajax({
-            	url: '/blockchain', 
-	            type: 'GET', 
-	            data: obj, 
-	            dataType: 'json',
-	            success: function(result) 
-	            { 
-	            	$(".alert-warning").text(result.message) 
-	            } 
-        	});
-    	})
-    $('body').on('click', '.testingPut', function(){
-    	let obj = {};
-        $.ajax({
-            	url: '/blockchain', 
-	            type: 'PUT', 
-	            data: obj, 
-	            dataType: 'json',
-	            success: function(result) 
-	            { 
-	            	$(".alert-info").text(result.message) 
-	            } 
-        	});
-		})
 		$('#register-form').submit(function(e){
 			e.preventDefault();
 			let password = $('#exampleInputPassword1').val() ||'exampleDelete'; 
@@ -92,7 +37,7 @@ $(function(){
 			FirstName, 
 			LastName, 
 			RentPayment
-		};
+			};
 			$.ajax({
             	url: '/users', 
 	            type: 'POST', 
@@ -108,7 +53,6 @@ $(function(){
 			e.preventDefault();
 			let EmailAddress = $('#loginEmail').val() || 'test1@development.com';
 			let password = $('#loginPassword').val() ||'exampleDelete';
-
 
 			let obj = {
 			EmailAddress,

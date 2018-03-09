@@ -2,7 +2,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require ('bcryptjs');
 
-// this is our schema to represent a restaurant
 const userSchema = mongoose.Schema({
   EmailAddress: {type: String, required: true},
   password: {type: String,required: true},

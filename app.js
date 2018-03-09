@@ -5,17 +5,12 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 var path = require('path');
-
 var logger = require('morgan');
-
-
 var users = require('./routes/users');
 var logged_in = require('./routes/logged_in');
-
 var regaliaTotal = require('./routes/regalia');
 
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
-
 
 mongoose.Promise = global.Promise;
 
@@ -29,7 +24,6 @@ app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
@@ -39,14 +33,9 @@ app.use('/logged_in', logged_in);
 
 app.use('/regalia', regaliaTotal);
 
-
 app.use('*', function (req, res) {
   res.status(404).json({ message: 'Not Found' });
 });
-
-
-
-
 
 let server;
 function runServer(databaseUrl, port = PORT) {
@@ -59,10 +48,10 @@ function runServer(databaseUrl, port = PORT) {
         console.log(`Your app is listening on port ${port}`);
         resolve();
       })
-        .on('error', err => {
-          mongoose.disconnect();
-          reject(err);
-        });
+      .on('error', err => {
+        mongoose.disconnect();
+        reject(err);
+      });
     });
   });
 }

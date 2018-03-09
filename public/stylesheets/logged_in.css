@@ -1,7 +1,6 @@
 .Rent-Payment {
 	font-size: 36px;
 	font-weight: bold;
-
 }
 .glyphicon {
 	font-size: 36px;
@@ -14,7 +13,6 @@
 .greeting {
 	text-align: center;
 }
-
 .problem, .no-problem { 
 	display: none; 
 	margin-top:100px; 
