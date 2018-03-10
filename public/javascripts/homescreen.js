@@ -11,15 +11,16 @@ $(function(){
 	}
 	$_GET = createURLObject();
 		if($_GET['delete']){
-			$(".delete-alert-danger2").text("Your Account was Deleted!").css("display", "block")
+			$(".delete-alert-danger2").text("Your Account was Deleted!").css("display", "block");
 		}
+	$('.signout-li').css('display','none');
 	$.ajax({
 		url: '/regalia/total', 
 		type: 'GET',  
 		dataType: 'json',
 		success: function(result) 
 		{ 
-			$(".total-regalia").text(result.total) 
+			$(".total-regalia").text(result.total); 
 		} 
 	});
 
@@ -45,8 +46,16 @@ $(function(){
 	            dataType: 'json',
 	            success: function(result) 
 	            { 
-	            	$(".registration-results").text(`${result.EmailAddress}${result.FullName} Registered!`) 
-	            } 
+					$(".registration-results").text(`${result.EmailAddress}, ${result.FullName} successfully registered!`); 
+					$('#exampleInputEmail1').val("");
+					$('#exampleInputPassword1').val("");
+					$('#exampleInputFirstName').val("");
+					$('#exampleInputLastName').val("");
+					$('#exampleInputRentPayment').val("");
+				},
+				error: function(error){
+					$(".registration-results").text(`Error found: ${error.responseJSON.message} !`); 
+				}
         	});
 		})
 		$('#login-form').submit(function(e){
