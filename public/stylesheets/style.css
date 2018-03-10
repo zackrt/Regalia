@@ -23,6 +23,7 @@ h4 {
 	display:block;
 	width: 65%;
 	margin:20px auto;
+	max-width: 640px;
 }
 .display-total-regalia {
 	padding-top: 5px;
@@ -51,11 +52,13 @@ h4 {
 .list-group {
 	width: 80%;
 	margin:10px auto;
+	max-width: 640px;
 }
 
 .glyphicon-king {
 	font-size: .8em;
 }
 .instruction-video {
-	margin: 20px auto;
+	margin: 30px auto;
+	border: solid lightgreen;
 }
