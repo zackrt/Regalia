@@ -20,7 +20,9 @@ h4 {
 	margin:20px auto;
 }
 .aptphoto, .accountphoto {
-	width: 60%;
+	display:block;
+	width: 65%;
+	margin:20px auto;
 }
 .display-total-regalia {
 	padding-top: 5px;
@@ -46,10 +48,14 @@ h4 {
 	font-size: 1.2em;
 	padding: 10px;
 }
-.steps-list {
-	margin-bottom: 100px;
+.list-group {
+	width: 80%;
+	margin:10px auto;
 }
 
 .glyphicon-king {
 	font-size: .8em;
+}
+.instruction-video {
+	margin: 20px auto;
 }
