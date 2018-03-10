@@ -200,3 +200,17 @@ TODO 3/7/18
 1.) model my delete user function in routes of CRUD
 
 2.) 
+
+to do & questions 3/10/18
+1. How to add vertical space between each <li> in the tutorial page, CSS?
+display: block, margin: 0 auto;
+
+1) clear form after successful register ""
+2) if unsuccessful register, return error message specifying why registration was unsuccessful
+3) on form state: password length must be between 6 and 20
+4) login better confirm message:  test@test.comtest test Registered!
+5) fork me on github -- open in new window v
+6) login link -- open in new window v
+7) about link -- open in new window v 
+8) legal link -- open in new window v
+9) sign out link should only appear if signed in v

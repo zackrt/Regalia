@@ -25,21 +25,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Regalia</a>
+                <a class="navbar-brand" href="#">Regalia&nbsp;<i class="glyphicon glyphicon-king"></i></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                        <li><a href="https://github.com/zackrt/Regalia">Fork Me on Github</a></li>
+                        <li><a target="_blank" href="https://github.com/zackrt/Regalia">Fork Me on Github</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                                 <li><a href="#">Login</a></li>
-                                <li><a href="https://github.com/zackrt/Regalia">About</a></li>
-                                <li><a href="https://github.com/zackrt/Regalia">Legal</a></li>
+                                <li><a target="_blank" href="https://github.com/zackrt/Regalia">About</a></li>
+                                <li><a target="_blank" href="https://github.com/zackrt/Regalia">Legal</a></li>
                                 <li role="separator" class="divider"></li>
-        
-                                <li><a href="#">Sign Out</a></li>
+                                <li class="signout-li"><a href="#">Sign Out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -52,14 +51,14 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-            <li role="presentation"><a href="#sampleImage" aria-controls="messages" role="tab" data-toggle="tab">Sample Image</a></li>
+            <li role="presentation"><a href="#sampleImage" aria-controls="messages" role="tab" data-toggle="tab">Tutorial</a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
                 <h4>Pay Your Rent. Collect Regalia cryptocurrency.</h4>
                 <section class="display-total-regalia">
-                        <h5>There is currently
+                        <h5>Currently
                         <span class="total-regalia"></span>
                         Regalia on the blockchain
                         </h5>
@@ -78,15 +77,15 @@
                             <input type="email" class="form-control email-address-input" id="exampleInputEmail1" placeholder="joe@smith.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control password-input" id="exampleInputPassword1" placeholder="Password" required>
+                            <label for="exampleInputPassword1">Password<span class="input-instruct-gray">must be 6-20 characters</span></label>
+                            <input type="password" class="form-control password-input" id="exampleInputPassword1" placeholder="Password" required minlength="6" maxlength="20">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFirstName">First name</label>
                             <input type="text" class="form-control firstname-input" id="exampleInputFirstName" placeholder="i.e. Joe" required>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputLastName">Last Name</label>
+                            <label for="exampleInputLastName">Last name</label>
                             <input type="text" class="form-control lastname-input" id="exampleInputLastName" placeholder="i.e. Smith" required>
                         </div>
                         <div class="form-group">
@@ -112,6 +111,19 @@
                     </form>
                     <div class="alert alert-info login-form-response" role="alert">cxcvbxcvbxc</div>
                 </div>
+               
+                
+                   <section class="video">
+                    <video class="instruction-video" width ="480" height"640" controls autoplay>
+                        <source src ="images/IMG_7661.mov" type="video/mp4">
+                        Your browser does not support the video tag   
+                    </video>
+                </section> 
+            
+                <div class="alert delete-alert-danger2" role="alert"></div>
+            </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="sampleImage"><img class="aptphoto"src="/images/download.jpg"  />
                 <section class="instructions">
                     <ul>
                         <p class= "steps-list">
@@ -129,20 +141,11 @@
                             </li>
                         </p>
                     </ul>
-
                 </section>
-               <!-- html5 code block to embed instruction video 
-                   <section class="video">
-                    <video class="instruction-video" width ="640" height"480" controls autoplay>
-                        <source src ="" type="video/mp4">
-                        Your browser does not support the video tag   
-                    </video>
-                </section> 
-            -->
-                <div class="alert delete-alert-danger2" role="alert"></div>
+                <picture>
+                        <img class="accountphoto"src="/images/account.jpg"  />
+                </picture>
             </div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="sampleImage"><img src="/images/download.jpg"  class="aptphoto"/></div>
         </div>
     </div>
     <script type="text/javascript" src="/javascripts/homescreen.js"></script>

@@ -19,8 +19,8 @@ h4 {
 	display: none;
 	margin:20px auto;
 }
-.aptphoto {
-	width: 100%;
+.aptphoto, .accountphoto {
+	width: 60%;
 }
 .display-total-regalia {
 	padding-top: 5px;
@@ -37,7 +37,7 @@ h4 {
 	width: 50%;
 }
 .rentpayment-input {
-	width: 20%;
+	width: 30%;
 }
 .input-instruct-gray {
 	color: darkgray;
@@ -48,4 +48,8 @@ h4 {
 }
 .steps-list {
 	margin-bottom: 100px;
+}
+
+.glyphicon-king {
+	font-size: .8em;
 }
