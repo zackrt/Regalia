@@ -65,18 +65,29 @@ h4 {
 /* for tablets & smartphones */
 @media (max-width:768px) {
 	.nav-tabs {
-		font-size: 26px;
+		font-size: 28px;
+		font-weight: bold;
 	}
 	.register-form, .login-form {
-		font-size: 18px;
+		font-size: 22px;
+		font-weight: bold;
 	}
 	h5 {
-		font-size: 20px;
+		font-size: 22px;
+		font-weight: bold;
 	}
 	input {
-		height: 45px;
+		height: 50px;
 	}
 	.btn {
 		width: 50%;
+		font-weight: bold;
+	}
+	.list-group-item {
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.accountphoto, .aptphoto {
+		width: 100%;
 	}
 }
