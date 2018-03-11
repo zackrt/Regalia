@@ -62,3 +62,21 @@ h4 {
 	margin: 30px auto;
 	border: solid lightgreen;
 }
+/* for tablets & smartphones */
+@media (max-width:768px) {
+	.nav-tabs {
+		font-size: 26px;
+	}
+	.register-form, .login-form {
+		font-size: 18px;
+	}
+	h5 {
+		font-size: 20px;
+	}
+	input {
+		height: 45px;
+	}
+	.btn {
+		width: 50%;
+	}
+}
