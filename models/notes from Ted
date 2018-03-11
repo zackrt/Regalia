@@ -214,3 +214,5 @@ display: block, margin: 0 auto;
 7) about link -- open in new window v 
 8) legal link -- open in new window v
 9) sign out link should only appear if signed in v
+
+heroku does and npm install, and then npm start
