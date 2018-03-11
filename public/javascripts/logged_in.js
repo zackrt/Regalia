@@ -77,6 +77,7 @@ $(function(){
 	            $('#inputFirstName3').val(result.FirstName);
 	           	$('#inputLastName3').val(result.LastName);
 				$('#inputRentPayment3').val(result.RentPayment);
+				$('.update-alert-success').css('display','block').text("Your account has been updated!");
 	        },
 			error: function(error){
 				$(".problem").css('display', 'block')

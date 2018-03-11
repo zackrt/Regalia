@@ -35,9 +35,9 @@
 	display:inline;
 	font-size: 1.2em;
 }
-.update-account-msg {
+.update-alert-success {
 	display:none;
-	color:green;
+	color: green;
 }
 /* for desktop */
 @media (min-width:768px) {
@@ -65,4 +65,5 @@
 		display:none;
 		color:green;
 	}
+
 }
