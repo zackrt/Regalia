@@ -10,6 +10,7 @@ $(function(){
 	let token = $_GET['token']
 	let EmailAddress = $_GET['EmailAddress']
 	$('.back-to-user-page').attr('href',`/logged_in.html?token=${token}&EmailAddress=${EmailAddress}`)
+	$('.dropdown-menu a').attr('href', '/');
     $.ajax({
 	    url: `/users`,
 	    type: 'GET',

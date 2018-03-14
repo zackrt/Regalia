@@ -216,3 +216,5 @@ display: block, margin: 0 auto;
 9) sign out link should only appear if signed in v
 
 heroku does and npm install, and then npm start
+
+if you click sign out, while in see users, doesn't return to index.html - log in tab.
