@@ -217,4 +217,9 @@ display: block, margin: 0 auto;
 
 heroku does and npm install, and then npm start
 
+<<<<<<< HEAD
 if you click sign out, while in see users, doesn't return to index.html - log in tab.
+=======
+
+feedback from Morgan and Austen: more visuals, less text, move the video up!
+>>>>>>> 5389005b608370b78f4fd1ffcd89ba587b7f9309
