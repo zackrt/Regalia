@@ -217,4 +217,36 @@ display: block, margin: 0 auto;
 
 heroku does and npm install, and then npm start
 
-if you click sign out, while in see users, doesn't return to index.html - log in tab.
+if you click sign out, while in see users, doesn't return to index.html - log in tab. v
+
+
+
+person a demo: 
+
+person b test:
+
+goal: to send 10 regalia from demo to test 
+
+0. person A init transaction (amount to send and recipient)
+ call on the frontend route ('/transaction') 2 fields recipient email, amount, with submit button and confirmation
+
+1.
+checks if user b exist, if so 
+user a -10 Regalia.
+user b +10 Regalia.
+
+
+
+
+
+
+.5. Transaction record: something records this transaction (person a approved this transaction ) (post/transactions recipient email and amount (property that will reduce into a transation, rent -10 for person a, its going to send an email with a link with own route to receive /receive/id))
+
+once transaction record created, then regalia is reserved (deducted from person A; and person b adds regalia)
+1. email needs to be sent person b 
+
+2. person b clicks on email link and regalia is transferred, and the transaction record is completed.
+
+
+auto send 
+ 
