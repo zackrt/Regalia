@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #B9D8FF;
+  background-color: rgb(242, 245, 250);
 }
 a {
   color: #00B7FF;
@@ -31,7 +31,7 @@ h4 {
 }
 .total-regalia {
 	font-size: 1.2em;
-	color: forestgreen;
+	color: rgb(14, 29, 143);
 }
 .delete-alert-danger2 {
 	display : none;
@@ -44,7 +44,7 @@ h4 {
 	width: 30%;
 }
 .input-instruct-gray {
-	color: darkgray;
+	color: rgb(120, 120, 120);
 }
 .instructions {
 	font-size: 1.2em;
@@ -61,7 +61,7 @@ h4 {
 }
 .instruction-video {
 	margin: 30px auto;
-	border: solid lightgreen;
+	border: solid rgb(21, 21, 201);
 }
 footer {
 	display: block;
