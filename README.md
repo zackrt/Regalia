@@ -5,6 +5,8 @@ Create an account today
 Log your monthly rent payment
 Send Regalia to other users*
 
+*Pardon our dust, the frontend design is being optimized
+
 Technology featured: HTML5, CSS, JAVASCRIPT, EXPRESS.JS, MOCHA, CHAI, CHAI-HTTP, MONGODB, MONGOOSE, HEROKU, TRAVISCI, NODE.JS, NODEMAILER, JQUERY
 
 *feature coming soon 
