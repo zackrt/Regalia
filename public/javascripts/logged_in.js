@@ -87,13 +87,15 @@ $(function(){
 	});
 	$('send-regalia-btn').click(function(){
 		e.preventDefault();
-			$('#inputEmail4').val();
-			$('#inputRegaliaSendAmount').val();
-
+			let sendObj = {
+				ReceivingEmail:$('#inputEmail4').val(),
+				sendAmount:$('#inputRegaliaSendAmount').val()
+			};
 			$.ajax({
-				url: , 
+				//need url, need to compare sendObj to see if other user email exists, and if sendAmount exist in user A's regalia
+				url: ``, 
 				type: 'PUT', 
-				data: ,
+				data: sendObj,
 				headers: { 'authorization': `Bearer ${token}`},
 				dataType: 'json',
 				success: function(result) 
