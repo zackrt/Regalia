@@ -80,8 +80,8 @@ $(function(){
 				$('.update-alert-success').css('display','block').text("Your account has been updated!");
 	        },
 			error: function(error){
-				$(".problem").css('display', 'block')
-				console.log('error', error)
+				$(".problem").css('display', 'block');
+				console.log('error', error);
 			}
 		});
 	});
@@ -89,5 +89,20 @@ $(function(){
 		e.preventDefault();
 			$('#inputEmail4').val();
 			$('#inputRegaliaSendAmount').val();
+
+			$.ajax({
+				url: , 
+				type: 'PUT', 
+				data: ,
+				headers: { 'authorization': `Bearer ${token}`},
+				dataType: 'json',
+				success: function(result) 
+				{ 
+					console.log('success = ', result);
+				},
+				error: function(error){
+					$('.send-alert-success').css('display', 'block').text("Invalid User or Insufficient Regalia!");
+				}
+			});
 	});
 })
