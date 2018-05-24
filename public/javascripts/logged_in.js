@@ -83,6 +83,11 @@ $(function(){
 				$(".problem").css('display', 'block')
 				console.log('error', error)
 			}
-		})
-	})
+		});
+	});
+	$('send-regalia-btn').click(function(){
+		e.preventDefault();
+			$('#inputEmail4').val();
+			$('#inputRegaliaSendAmount').val();
+	});
 })
