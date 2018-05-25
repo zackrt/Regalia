@@ -36,7 +36,26 @@ router.delete('/for_tests/:id', (req, res) => {
           .then(user => res.status(204).end())
           .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
-//update account 
+//sending regalia to another verified user while logged in
+router.put('/sendRegalia', jwtAuth,(req, res) =>{
+    //validate, check current user has enough, get value and check against input value
+    // check if input for email is a real user, 
+    try {
+        //
+        User.findOneAndUpdate(
+            //change amount in account in user A, while increase user B increase
+            {EmailAddress: req.body.EmailAddress},
+            req.body,
+            {new: true},
+            (err, newUser) => {
+                if (err) return res.status(500).send(err);
+                res.send(newUser);
+            })
+        } catch (e) {
+            res.status(500).json({ message: 'Internal server error, cannot transfer regalia' });
+        }
+    });
+    //update account 
 router.put('/', jwtAuth,(req, res) =>{
     try {
         User.findOneAndUpdate(
@@ -61,7 +80,6 @@ router.put('/for_tests/:id', (req, res) =>{
           console.error(message);
           return res.status(400).json({ message: message });
         }
-      
         // we only support a subset of fields being updateable.
         // if the user sent over any of the updatableFields, we udpate those values
         // in document

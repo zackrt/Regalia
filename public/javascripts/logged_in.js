@@ -92,8 +92,8 @@ $(function(){
 				sendAmount:$('#inputRegaliaSendAmount').val()
 			};
 			$.ajax({
-				//need url, need to compare sendObj to see if other user email exists, and if sendAmount exist in user A's regalia
-				url: ``, 
+				//need url, need to compare sendObj to see if other user email exists, and if sendAmount exist in user A's regalia, no negative amount allowed, no letters, check if regalia by adding to receiver. 
+				url: `seeUsers`, 
 				type: 'PUT', 
 				data: sendObj,
 				headers: { 'authorization': `Bearer ${token}`},
@@ -103,7 +103,7 @@ $(function(){
 					console.log('success = ', result);
 				},
 				error: function(error){
-					$('.send-alert-success').css('display', 'block').text("Invalid User or Insufficient Regalia!");
+					$('.send-alert-success').css('display', 'block').text("Invalid User email or Insufficient Regalia!");
 				}
 			});
 	});
