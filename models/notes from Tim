@@ -223,3 +223,57 @@ if you click sign out, while in see users, doesn't return to index.html - log in
 
 feedback from Morgan and Austen: more visuals, less text, move the video up!
 >>>>>>> 5389005b608370b78f4fd1ffcd89ba587b7f9309
+
+node v6 < doesn't support async
+node ** > supports up
+// finding out your node version
+$ node --version
+async (req, res) => {
+    cosnt userExists = await User.findOneById().count()
+    const amountLeft = amount > amount
+    if (!userExists || !amountLeft){
+        throw err
+    }
+    ....
+}
+User.findOneById().count().then(count => {
+    // 1 or 9
+    const hasAmount = amount > amount
+    if (!count || !hasAmount) {
+        throw err
+    }
+    else {
+        ....
+        res()
+    }
+})
+const q1 = new Promise((resolve, reject) => {
+    setTimeOut(() => {
+        resolve(123 * 456)
+    }, 5000)
+})
+const q2 = 1 + 1
+function isCorrect(q1, q2)
+if(isCorrect(q1, q2))
+First way:
+(req, res) => {
+    
+    q1.then(resultOfQ1 => {
+        const q2 = 1 + 1
+        console.log(resultofq1, q2)
+    })
+}
+Second way:
+async (req, res) => {
+    
+    const q1 = new Promise((resolve, reject) => {
+        setTimeOut(() => {
+            resolve(123 * 456)
+        }, 5000)
+    })   // promise
+    const resultofq1 = await q1 // number   
+    const q2 = 1 + 1            // number
+    console.log(111111, 2)  /// 1111111  2
+}
+1. add 'async' keyword infront of function
+2. add 'await' keyword infront of all promises

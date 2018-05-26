@@ -37,25 +37,45 @@ router.delete('/for_tests/:id', (req, res) => {
           .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
 //sending regalia to another verified user while logged in
-router.put('/sendRegalia', jwtAuth,(req, res) =>{
+router.put('/sendRegalia', jwtAuth, async (req, res) =>{
     //validate, check current user has enough, get value and check against input value
-    // check if input for email is a real user, 
+    // this is truthy or falsy, returns Target user's document
+    const targetUser = await User.findOne({EmailAddress: req.body.EmailAddress});
+        console.log(req.user);
+    //sync is quick: truthy or falsy
+    
+    const REGALIA = req.user.RentPayment > req.body.RentPayment;
+
+    if (!targetUser || !REGALIA) {
+        throw new Error('Invalid User or Insufficient Regalia funds')
+    }
     try {
-        //
-        User.findOneAndUpdate(
-            //change amount in account in user A, while increase user B increase
-            {EmailAddress: req.body.EmailAddress},
-            req.body,
-            {new: true},
-            (err, newUser) => {
-                if (err) return res.status(500).send(err);
-                res.send(newUser);
-            })
-        } catch (e) {
-            res.status(500).json({ message: 'Internal server error, cannot transfer regalia' });
-        }
+        //find the other user email req.body input
+        const sourceUser = await User.findById(req.user.id);
+        targetUser.RentPayment = targetUser.RentPayment + req.body.RentPayment;
+        sourceUser.RentPayment = sourceUser.RentPayment - req.body.RentPayment;
+        await targetUser.save();
+        await sourceUser.save();
+        res.status(200).json(`Regalia Sent to ${targetUser.EmailAddress}`);
+    } catch(e) {
+        res.status(400).json(e);
     });
-    //update account 
+
+
+    //     targetUser.findOneAndUpdate(
+    //         {EmailAddress: req.body.EmailAddress},
+    //          {RentPayment: req.body.RentPayment},
+    //         //change amount in account in user A, while increase user B increase
+    //         req.body,
+    //         (err) => {
+    //             if (err) return res.status(500).send(err);
+    //             res.send();
+    //         })
+    // } catch (e) {
+    //         res.status(500).json({ message: 'Internal server error, cannot transfer Regalia' });
+    // }
+    });
+    //PUT to update account  
 router.put('/', jwtAuth,(req, res) =>{
     try {
         User.findOneAndUpdate(

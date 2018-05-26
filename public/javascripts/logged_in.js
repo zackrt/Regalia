@@ -85,7 +85,7 @@ $(function(){
 			}
 		});
 	});
-	$('send-regalia-btn').click(function(){
+	$('.send-regalia-btn').click(function(e){
 		e.preventDefault();
 			let sendObj = {
 				ReceivingEmail:$('#inputEmail4').val(),
@@ -93,17 +93,18 @@ $(function(){
 			};
 			$.ajax({
 				//need url, need to compare sendObj to see if other user email exists, and if sendAmount exist in user A's regalia, no negative amount allowed, no letters, check if regalia by adding to receiver. 
-				url: `seeUsers`, 
+				url: `/logged_in/sendRegalia`, 
 				type: 'PUT', 
 				data: sendObj,
 				headers: { 'authorization': `Bearer ${token}`},
 				dataType: 'json',
 				success: function(result) 
 				{ 
+					//transfers
 					console.log('success = ', result);
 				},
 				error: function(error){
-					$('.send-alert-success').css('display', 'block').text("Invalid User email or Insufficient Regalia!");
+					$('.send-alert-success').css('display', 'block').text("Invalid User receiver email or Insufficient Regalia!");
 				}
 			});
 	});
