@@ -103,7 +103,7 @@ $(function(){
 				{ 
 					//transaction completion
 					console.log('success = ', result);
-					$('.send-alert-success').css('display','block').text(`${RentPayment} Regalia sent to ${EmailAddress}!`);
+					$('.send-alert-success').css('display','block').text(`${sendObj.RentPayment} Regalia sent to ${sendObj.EmailAddress}!`);
 				},
 				error: function(error){
 					$('.send-alert-success').css('display', 'block').text("Invalid User receiver email or Insufficient Regalia!");
