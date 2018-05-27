@@ -57,7 +57,7 @@ router.put('/sendRegalia', jwtAuth, async (req, res) =>{
         sourceUser.RentPayment = Number(sourceUser.RentPayment) - Number(req.body.RentPayment);
         await targetUser.save();
         await sourceUser.save();
-        res.status(200).json(`Regalia Sent to ${targetUser.EmailAddress}`);
+        res.status(200).json(`${sourceUser.RentPayment} Regalia Sent to ${targetUser.EmailAddress}`);
     } catch(e) {
         res.status(400).json(e);
     }
