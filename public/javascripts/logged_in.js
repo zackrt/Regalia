@@ -88,9 +88,10 @@ $(function(){
 	$('.send-regalia-btn').click(function(e){
 		e.preventDefault();
 			let sendObj = {
-				ReceivingEmail:$('#inputEmail4').val(),
-				sendAmount:$('#inputRegaliaSendAmount').val()
+				EmailAddress:$('#inputEmail4').val(),
+				RentPayment:$('#inputRegaliaSendAmount').val()
 			};
+			console.log(sendObj);
 			$.ajax({
 				//need url, need to compare sendObj to see if other user email exists, and if sendAmount exist in user A's regalia, no negative amount allowed, no letters, check if regalia by adding to receiver. 
 				url: `/logged_in/sendRegalia`, 
@@ -100,7 +101,7 @@ $(function(){
 				dataType: 'json',
 				success: function(result) 
 				{ 
-					//transfers
+					//transaction completion
 					console.log('success = ', result);
 				},
 				error: function(error){

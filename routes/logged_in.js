@@ -43,17 +43,18 @@ router.put('/sendRegalia', jwtAuth, async (req, res) =>{
     const targetUser = await User.findOne({EmailAddress: req.body.EmailAddress});
         console.log(req.user);
     //sync is quick: truthy or falsy
-    
     const REGALIA = req.user.RentPayment > req.body.RentPayment;
-
-    if (!targetUser || !REGALIA) {
-        throw new Error('Invalid User or Insufficient Regalia funds')
+    if (!targetUser) {
+        return res.status(400).json({'error':'Invalid User!'});
+    }
+    if (!REGALIA) {
+        return res.status(400).json({'error':'Insufficient Regalia funds!'});
     }
     try {
         //find the other user email req.body input
         const sourceUser = await User.findById(req.user.id);
-        targetUser.RentPayment = targetUser.RentPayment + req.body.RentPayment;
-        sourceUser.RentPayment = sourceUser.RentPayment - req.body.RentPayment;
+        targetUser.RentPayment = Number(targetUser.RentPayment) + Number(req.body.RentPayment);
+        sourceUser.RentPayment = Number(sourceUser.RentPayment) - Number(req.body.RentPayment);
         await targetUser.save();
         await sourceUser.save();
         res.status(200).json(`Regalia Sent to ${targetUser.EmailAddress}`);
