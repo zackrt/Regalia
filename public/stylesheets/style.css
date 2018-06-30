@@ -38,7 +38,7 @@ h4 {
 	color: red;
 }
 .email-address-input, .password-input, .firstname-input, .lastname-input {
-	width: 50%;
+	width: 80%;
 }
 .rentpayment-input {
 	width: 30%;
@@ -106,6 +106,9 @@ footer {
 		font-weight: bold;
 	}
 	.accountphoto, .aptphoto {
+		width: 100%;
+	}
+	.email-address-input, .password-input, .firstname-input, .lastname-input {
 		width: 100%;
 	}
 }
