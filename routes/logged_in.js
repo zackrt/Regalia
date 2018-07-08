@@ -62,22 +62,6 @@ router.put('/sendRegalia', jwtAuth, async (req, res) =>{
         res.status(400).json(e);
     }
 });
-
-
-    //     targetUser.findOneAndUpdate(
-    //         {EmailAddress: req.body.EmailAddress},
-    //          {RentPayment: req.body.RentPayment},
-    //         //change amount in account in user A, while increase user B increase
-    //         req.body,
-    //         (err) => {
-    //             if (err) return res.status(500).send(err);
-    //             res.send();
-    //         })
-    // } catch (e) {
-    //         res.status(500).json({ message: 'Internal server error, cannot transfer Regalia' });
-    // }
-
-    //PUT to update account  
 router.put('/', jwtAuth,(req, res) =>{
     try {
         User.findOneAndUpdate(
