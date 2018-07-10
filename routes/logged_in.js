@@ -59,7 +59,7 @@ router.put('/sendRegalia', jwtAuth, async (req, res) =>{
         await targetUser.save();
         await sourceUser.save();
         res.status(200).json(`${sourceUser.RentPayment} Regalia Sent to ${targetUser.EmailAddress}`);
-        location.reload();
+        location.reload();        
     } catch(e) {
         res.status(400).json(e);
     }
