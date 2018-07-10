@@ -82,7 +82,10 @@ footer {
 	margin: 10px;
 }
 /* for tablets & smartphones */
-@media (max-width:768px) {
+@media only screen and ( max-width: 768px) {
+	.instruction-video {
+		max-width:640px;
+	}
 	.nav-tabs {
 		font-size: 28px;
 		font-weight: bold;
