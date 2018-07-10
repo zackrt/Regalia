@@ -84,7 +84,8 @@ footer {
 /* for tablets & smartphones */
 @media only screen and ( max-width: 768px) {
 	.instruction-video {
-		max-width:640px;
+		max-width:480px;
+		width:100%;
 	}
 	.nav-tabs {
 		font-size: 28px;
