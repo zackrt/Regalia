@@ -65,7 +65,7 @@
 		display:none;
 		color:green;
 	}
-	@media only and screen ( max-width: 768 px) {
+	@media only and screen ( max-width: 768px) {
 		.table {
 			overflow: scroll;
 		}

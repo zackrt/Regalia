@@ -37,6 +37,7 @@ router.delete('/for_tests/:id', (req, res) => {
           .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
 //sending regalia to another verified user while logged in
+// NEEDS TO AUTO REFRESH AFTER SENDING, added location.reload();!
 router.put('/sendRegalia', jwtAuth, async (req, res) =>{
     //validate, check current user has enough, get value and check against input value
     // this is truthy or falsy, returns Target user's document
@@ -58,6 +59,7 @@ router.put('/sendRegalia', jwtAuth, async (req, res) =>{
         await targetUser.save();
         await sourceUser.save();
         res.status(200).json(`${sourceUser.RentPayment} Regalia Sent to ${targetUser.EmailAddress}`);
+        location.reload();
     } catch(e) {
         res.status(400).json(e);
     }

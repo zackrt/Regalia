@@ -4,6 +4,7 @@
 body {
     background: #F0F0F0;
     margin:0;
+    background-size: cover;
 }
 main {
     display: grid;
@@ -21,7 +22,7 @@ img {
     font-size: 2em;
     color: blue;
 }
-@media only and screen ( max-width: 768 px) {
+@media only and screen ( max-width: 768px) {
     .table {
         overflow: scroll;
     }
