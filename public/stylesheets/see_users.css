@@ -21,3 +21,8 @@ img {
     font-size: 2em;
     color: blue;
 }
+@media only and screen ( max-width: 768 px) {
+    table {
+        overflow: scroll;
+    }
+}
