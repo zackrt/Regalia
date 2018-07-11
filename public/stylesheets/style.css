@@ -1,5 +1,6 @@
 body {
-  padding: 50px;
+  padding: 5px;
+  margin-top:20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: linear-gradient(to top right, #FCEE21, #ED1C24);
   background-size: cover;
@@ -11,11 +12,11 @@ a {
 	margin: 30px auto 30px;
 }
 #home {
-	width:70%;
+	width:90%;
 	margin:20px auto;
 }
 h4 {
-  font-size: 2em;
+  	font-size: 2em;
 }
 .login-form-response {
 	display: none;
@@ -40,6 +41,7 @@ h4 {
 }
 .email-address-input, .password-input, .firstname-input, .lastname-input {
 	width: 80%;
+	max-width: 520px;
 }
 .rentpayment-input {
 	width: 30%;
@@ -71,7 +73,7 @@ footer {
 }
 .description {
 	margin-top: 25px;
-	color:white
+	color:white;
 }
 .description ul {
 	margin-top: 25px;
@@ -115,5 +117,9 @@ footer {
 	}
 	.email-address-input, .password-input, .firstname-input, .lastname-input {
 		width: 100%;
+	}
+	section.description {
+		width:120%;
+		margin-left:-50px;
 	}
 }
