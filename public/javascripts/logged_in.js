@@ -22,6 +22,7 @@ $(function(){
 	    	$(".no-problem").css('display', 'block');
 			$(".Email-Address").text(EmailAddress);
 			$(".Rent-Payment").text(numberWithCommas(data.user.RentPayment));
+			$(".Rent-Payment").attr("data-rent",data.user.RentPayment);
 			$("#inputEmail3").val(EmailAddress);
 			//fill in update form
 			$("#inputFirstName3").val(data.user.FirstName);
@@ -101,9 +102,11 @@ $(function(){
 				dataType: 'json',
 				success: function(result) 
 				{ 
-					//transaction completion
-					console.log('success = ', result);
+					//transaction completion,number.toLocaleString();			
+					const newAmount = parseInt($('.Rent-Payment').attr("data-rent"),10)-sendObj.RentPayment;
 					$('.send-alert-success').css('display','block').text(`${sendObj.RentPayment} Regalia sent to ${sendObj.EmailAddress}!`);
+					$('.Rent-Payment').text(numberWithCommas(newAmount));
+					$('.Rent-Payment').attr("data-rent",newAmount);
 				},
 				error: function(error){
 					$('.send-alert-success').css('display', 'block').text("Invalid User receiver email or Insufficient Regalia!");
