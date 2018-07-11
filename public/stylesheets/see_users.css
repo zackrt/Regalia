@@ -9,6 +9,7 @@ body {
 main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    overflow-x: scroll;
 }
 img {
     display:block;
@@ -22,8 +23,12 @@ img {
     font-size: 2em;
     color: blue;
 }
+.table {
+    overflow-x: scroll;
+}
 @media only and screen ( max-width: 768px) {
     .table {
-        overflow: scroll;
+        max-width: 520px;
+        overflow-x: scroll;
     }
 }

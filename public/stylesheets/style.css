@@ -1,6 +1,6 @@
 body {
   padding: 5px;
-  margin-top:20px;
+  margin-top:50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: linear-gradient(to top right, #FCEE21, #ED1C24);
   background-size: cover;
@@ -54,7 +54,7 @@ h4 {
 	padding: 10px;
 }
 .list-group {
-	width: 80%;
+	width: 90%;
 	margin:10px auto;
 	max-width: 640px;
 }
