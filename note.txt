@@ -1,0 +1,1 @@
+#1 check bug when sending regalia does not show up in receiver's account, even after reloading user account page
