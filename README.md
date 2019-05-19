@@ -31,3 +31,5 @@ complies with AML: Anti-Money Laundering rules.
 
 refactor:
 fix input method to only allow positive integers
+check for functionality, large numbers, and decimals 
+
