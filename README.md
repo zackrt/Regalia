@@ -33,3 +33,4 @@ refactor:
 fix input method to only allow positive integers
 check for functionality, large numbers, and decimals 
 
+demo account 20k
