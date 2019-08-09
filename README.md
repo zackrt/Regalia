@@ -30,7 +30,7 @@ complies with AML: Anti-Money Laundering rules.
 * Regalia Administration removes itself from any and all legal responsibility and/or legal liability in relation to any and all users action with their accounts or amounts, even when logged out.
 
 refactor:
-fix input method to only allow positive integers
+fix input method to only allow positive integers DONE 8/9/2019
 check for functionality, large numbers, and decimals 
 
 demo account 20k
